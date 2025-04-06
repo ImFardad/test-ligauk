@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تورنمنت استراتژی برد | نظریه بازی‌ها</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        body {
+            font-family: 'Vazir', sans-serif;
+            background-color: #0a192f;
+            color: #e6f1ff;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0a192f 0%, #112240 50%, #1e3a8a 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.1), 0 10px 10px -5px rgba(16, 185, 129, 0.04);
+        }
+        
+        .glow {
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px rgba(16, 185, 129, 0.5);
+            }
+            to {
+                box-shadow: 0 0 20px rgba(16, 185, 129, 0.8);
+            }
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .typing-demo {
+            width: 22ch;
+            animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+        }
+        
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: rgba(16, 185, 129, 0.5);
+            border-radius: 50%;
+            animation: float linear infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) translateX(100px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="gradient-bg">
+    <!-- Particles Background -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Navigation -->
+    <nav class="relative z-10 bg-opacity-90 bg-gray-900 backdrop-filter backdrop-blur-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
+                        <span class="typing-demo">استراتژی‌های برتر</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-10 space-x-reverse">
+                    <a href="#home" class="text-green-400 hover:text-blue-400 transition duration-300">خانه</a>
+                    <a href="#about" class="text-gray-300 hover:text-green-400 transition duration-300">درباره رویداد</a>
+                    <a href="#schedule" class="text-gray-300 hover:text-green-400 transition duration-300">برنامه زمانی</a>
+                    <a href="#speakers" class="text-gray-300 hover:text-green-400 transition duration-300">اساتید</a>
+                    <a href="#register" class="px-4 py-2 bg-gradient-to-r from-green-500 to-blue-600 rounded-full hover:from-green-600 hover:to-blue-700 transition duration-300">ثبت نام</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-300 hover:text-green-400 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="relative py-20 overflow-hidden">
+        <div class="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center">
+            <div class="md:w-1/2 flex flex-col items-start mt-10 md:mt-0">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                    <span class="text-green-400">تورنمنت</span> 
+                    <span class="text-blue-400">نظریه بازی‌ها</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-8">
+                    مسابقه‌ای هیجان‌انگیز در زمینه استراتژی‌های برد و تصمیم‌گیری هوشمند. 
+                    در این رویداد آموزشی-رقابتی، با مفاهیم پیشرفته نظریه بازی‌ها آشنا شده و در چالش‌های عملی شرکت خواهید کرد.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 sm:space-x-reverse">
+                    <a href="#register" class="px-8 py-3 bg-gradient-to-r from-green-500 to-blue-600 rounded-full text-lg font-semibold hover:from-green-600 hover:to-blue-700 transition duration-300 text-center">
+                        ثبت نام کنید
+                    </a>
+                    <a href="#about" class="px-8 py-3 border-2 border-green-500 rounded-full text-lg font-semibold text-green-400 hover:bg-green-500 hover:bg-opacity-10 transition duration-300 text-center">
+                        اطلاعات بیشتر
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 relative">
+                <div class="floating">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3279/3279032.png" alt="Game Theory Illustration" class="w-full max-w-md mx-auto">
+                </div>
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500 rounded-full filter blur-3xl opacity-20"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-green-500 rounded-full filter blur-3xl opacity-20"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-900 bg-opacity-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="text-green-400">درباره</span> 
+                    <span class="text-blue-400">رویداد</span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-500 to-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pl-10">
+                    <div class="relative">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2936/2936886.png" alt="About Event" class="w-full max-w-md mx-auto rounded-lg shadow-xl transform rotate-3">
+                        <div class="absolute -z-10 -top-6 -right-6 w-full h-full border-4 border-green-500 rounded-lg opacity-50"></div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6 text-green-400">مسابقه‌ای متفاوت در حوزه تصمیم‌گیری استراتژیک</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        تورنمنت استراتژی برد یک رویداد آموزشی-رقابتی منحصر به فرد است که شرکت‌کنندگان را با مفاهیم پیشرفته نظریه بازی‌ها و استراتژی‌های تصمیم‌گیری هوشمند آشنا می‌کند. این رویداد ترکیبی از آموزش‌های تخصصی و چالش‌های عملی است که در قالب مسابقات تیمی برگزار می‌شود.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg border-l-4 border-green-500 card-hover">
+                            <div class="text-green-400 mb-3">
+                                <i class="fas fa-brain text-3xl"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">آموزش پیشرفته</h4>
+                            <p class="text-gray-300 text-sm">آشنایی با آخرین تکنیک‌های نظریه بازی‌ها و استراتژی‌های برد</p>
+                        </div>
+                        <div class="bg-gray-800 bg-opacity-50 p-6 rounded-lg border-l-4 border-blue-500 card-hover">
+                            <div class="text-blue-400 mb-3">
+                                <i class="fas fa-trophy text-3xl"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">مسابقه جذاب</h4>
+                            <p class="text-gray-300 text-sm">رقابت تیمی در چالش‌های عملی تصمیم‌گیری استراتژیک</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="text-green-400">ویژگی‌های</span> 
+                    <span class="text-blue-400">منحصر به فرد</span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-500 to-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-900 bg-opacity-50 p-8 rounded-xl card-hover">
+                    <div class="text-green-400 mb-6">
+                        <i class="fas fa-chess-queen text-5xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">استراتژی‌های پیشرفته</h3>
+                    <p class="text-gray-300">
+                        یادگیری عمیق استراتژی‌های برد در شرایط مختلف از جمله بازی‌های مجموع صفر، تعادل نش و دیگر مفاهیم پیشرفته نظریه بازی‌ها.
+                    </p>
+                </div>
+                <div class="bg-gray-900 bg-opacity-50 p-8 rounded-xl card-hover">
+                    <div class="text-blue-400 mb-6">
+                        <i class="fas fa-users text-5xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">کار تیمی هوشمند</h3>
+                    <p class="text-gray-300">
+                        تقویت مهارت‌های کار تیمی در حل مسائل پیچیده استراتژیک و تصمیم‌گیری جمعی در شرایط رقابتی.
+                    </p>
+                </div>
+                <div class="bg-gray-900 bg-opacity-50 p-8 rounded-xl card-hover">
+                    <div class="text-green-400 mb-6">
+                        <i class="fas fa-chart-line text-5xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">تحلیل تصمیم‌گیری</h3>
+                    <p class="text-gray-300">
+                        توسعه توانایی تحلیل تصمیم‌های استراتژیک و پیش‌بینی رفتار رقبا در سناریوهای مختلف.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Schedule Section -->
+    <section id="schedule" class="py-20 bg-gray-900 bg-opacity-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="text-green-400">برنامه</span> 
+                    <span class="text-blue-400">زمانی</span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-500 to-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="relative">
+                    <!-- Timeline -->
+                    <div class="border-r-2 border-green-500 absolute h-full top-0 left-1/2 transform -translate-x-1/2"></div>
+                    
+                    <!-- Timeline Items -->
+                    <div class="mb-8">
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="md:w-1/2 md:pr-10 md:text-right mb-4 md:mb-0">
+                                <div class="p-6 bg-gray-800 rounded-lg shadow-lg card-hover">
+                                    <h3 class="text-xl font-bold text-green-400 mb-2">مرحله اول: آموزش</h3>
+                                    <p class="text-gray-300 mb-2">شنبه ۱۵ مرداد ۱۴۰۲ - ساعت ۱۶ تا ۲۰</p>
+                                    <p class="text-gray-300">
+                                        آشنایی با مفاهیم پایه و پیشرفته نظریه بازی‌ها و استراتژی‌های تصمیم‌گیری
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="hidden md:block md:w-1/2"></div>
+                        </div>
+                        <div class="w-6 h-6 bg-green-500 rounded-full absolute left-1/2 transform -translate-x-1/2 -mt-3"></div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="hidden md:block md:w-1/2"></div>
+                            <div class="md:w-1/2 md:pl-10 mb-4 md:mb-0">
+                                <div class="p-6 bg-gray-800 rounded-lg shadow-lg card-hover">
+                                    <h3 class="text-xl font-bold text-blue-400 mb-2">مرحله دوم: کارگاه عملی</h3>
+                                    <p class="text-gray-300 mb-2">یکشنبه ۱۶ مرداد ۱۴۰۲ - ساعت ۱۶ تا ۲۰</p>
+                                    <p class="text-gray-300">
+                                        حل مسائل عملی و سناریوهای مختلف تصمیم‌گیری استراتژیک در قالب کارگاه
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-6 h-6 bg-blue-500 rounded-full absolute left-1/2 transform -translate-x-1/2 -mt-3"></div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="md:w-1/2 md:pr-10 md:text-right mb-4 md:mb-0">
+                                <div class="p-6 bg-gray-800 rounded-lg shadow-lg card-hover">
+                                    <h3 class="text-xl font-bold text-green-400 mb-2">مرحله سوم: مسابقات تیمی</h3>
+                                    <p class="text-gray-300 mb-2">دوشنبه ۱۷ مرداد ۱۴۰۲ - ساعت ۱۶ تا ۲۱</p>
+                                    <p class="text-gray-300">
+                                        رقابت تیمی در چالش‌های پیچیده تصمیم‌گیری استراتژیک با داوری اساتید
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="hidden md:block md:w-1/2"></div>
+                        </div>
+                        <div class="w-6 h-6 bg-green-500 rounded-full absolute left-1/2 transform -translate-x-1/2 -mt-3"></div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="hidden md:block md:w-1/2"></div>
+                            <div class="md:w-1/2 md:pl-10 mb-4 md:mb-0">
+                                <div class="p-6 bg-gray-800 rounded-lg shadow-lg card-hover glow">
+                                    <h3 class="text-xl font-bold text-blue-400 mb-2">مرحله نهایی و اهدای جوایز</h3>
+                                    <p class="text-gray-300 mb-2">سه‌شنبه ۱۸ مرداد ۱۴۰۲ - ساعت ۱۸ تا ۲۱</p>
+                                    <p class="text-gray-300">
+                                        معرفی تیم‌های برتر و اهدای جوایز نقدی و فرصت‌های ویژه به برندگان
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-6 h-6 bg-blue-500 rounded-full absolute left-1/2 transform -translate-x-1/2 -mt-3 animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Speakers Section -->
+    <section id="speakers" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="text-green-400">اساتید</span> 
+                    <span class="text-blue-400">و مربیان</span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-500 to-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-gray-900 bg-opacity-50 rounded-xl overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Speaker 1" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h3 class="text-xl font-bold text-white">دکتر امیر حسینی</h3>
+                            <p class="text-green-400">متخصص نظریه بازی‌ها</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300">
+                            استاد دانشگاه و پژوهشگر برجسته در حوزه نظریه بازی‌ها و تصمیم‌گیری استراتژیک با بیش از ۱۵ سال سابقه تدریس و تحقیق.
+                        </p>
+                        <div class="flex mt-4 space-x-4 space-x-reverse">
+                            <a href="#" class="text-blue-400 hover:text-blue-300">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="text-green-400 hover:text-green-300">
+                                <i class="fas fa-globe text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 bg-opacity-50 rounded-xl overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Speaker 2" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h3 class="text-xl font-bold text-white">دکتر مریم محمدی</h3>
+                            <p class="text-blue-400">کارشناس استراتژی‌های رقابتی</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300">
+                            مشاور ارشد استراتژی در شرکت‌های بین‌المللی و متخصص در طراحی استراتژی‌های برد در محیط‌های رقابتی پیچیده.
+                        </p>
+                        <div class="flex mt-4 space-x-4 space-x-reverse">
+                            <a href="#" class="text-blue-400 hover:text-blue-300">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="text-green-400 hover:text-green-300">
+                                <i class="fas fa-globe text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 bg-opacity-50 rounded-xl overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Speaker 3" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h3 class="text-xl font-bold text-white">دکتر رضا نوروزی</h3>
+                            <p class="text-green-400">متخصص هوش مصنوعی و بازی‌ها</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300">
+                            پژوهشگر پیشرو در تقاطع هوش مصنوعی و نظریه بازی‌ها، طراح الگوریتم‌های تصمیم‌گیری در شرایط عدم قطعیت.
+                        </p>
+                        <div class="flex mt-4 space-x-4 space-x-reverse">
+                            <a href="#" class="text-blue-400 hover:text-blue-300">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="text-green-400 hover:text-green-300">
+                                <i class="fas fa-globe text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 bg-opacity-50 rounded-xl overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Speaker 4" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h3 class="text-xl font-bold text-white">دکتر سارا کریمی</h3>
+                            <p class="text-blue-400">کارشناس روانشناسی تصمیم‌گیری</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-300">
+                            متخصص در روانشناسی تصمیم‌گیری و شناخت سوگیری‌های ذهنی در فرآیندهای استراتژیک و رقابتی.
+                        </p>
+                        <div class="flex mt-4 space-x-4 space-x-reverse">
+                            <a href="#" class="text-blue-400 hover:text-blue-300">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="text-green-400 hover:text-green-300">
+                                <i class="fas fa-globe text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Registration Section -->
+    <section id="register" class="py-20 bg-gray-900 bg-opacity-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl shadow-2xl overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-gradient-to-br from-green-500 to-blue-600 p-10 flex flex-col justify-center">
+                        <h2 class="text-3xl font-bold text-white mb-6">ثبت نام در رویداد</h2>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="bg-green-400 rounded-full p-1 mr-3 mt-1">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <span class="text-white">آموزش پیشرفته نظریه بازی‌ها</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-green-400 rounded-full p-1 mr-3 mt-1">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <span class="text-white">کارگاه‌های عملی و مسابقات تیمی</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-green-400 rounded-full p-1 mr-3 mt-1">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <span class="text-white">مشاوره تخصصی از اساتید برجسته</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-green-400 rounded-full p-1 mr-3 mt-1">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <span class="text-white">گواهی معتبر پایان دوره</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-green-400 rounded-full p-1 mr-3 mt-1">
+                                    <i class="fas fa-check text-white text-xs"></i>
+                                </div>
+                                <span class="text-white">جوایز نقدی برای تیم‌های برتر</span>
+                            </li>
+                        </ul>
+                        <div class="mt-8 bg-white bg-opacity-20 rounded-lg p-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-white font-bold">هزینه ثبت نام:</span>
+                                <span class="text-2xl font-bold text-white">۲۹۹,۰۰۰ تومان</span>
+                            </div>
+                            <div class="text-white text-sm mt-2">شامل تمامی جلسات آموزشی، کارگاه‌ها و مسابقات</div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-10">
+                        <h3 class="text-2xl font-bold text-green-400 mb-6">فرم ثبت نام</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label class="block text-gray-300 text-sm font-bold mb-2" for="name">نام کامل</label>
+                                <input class="w-full bg-gray-700 bg-opacity-50 border border-gray-600 rounded-lg py-3 px-4 text-gray-300 leading-tight focus:outline-none focus:ring-2 focus:ring-green-500" id="name" type="text" placeholder="نام و نام خانوادگی">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-300 text-sm font-bold mb-2" for="email">پست الکترونیکی</label>
+                                <input class="w-full bg-gray-700 bg-opacity-50 border border-gray-600 rounded-lg py-3 px-4 text-gray-300 leading-tight focus:outline-none focus:ring-2 focus:ring-green-500" id="email" type="email" placeholder="example@domain.com">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-300 text-sm font-bold mb-2" for="phone">شماره تماس</label>
+                                <input class="w-full bg-gray-700 bg-opacity-50 border border-gray-600 rounded-lg py-3 px-4 text-gray-300 leading-tight focus:outline-none focus:ring-2 focus:ring-green-500" id="phone" type="tel" placeholder="09xxxxxxxxx">
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-300 text-sm font-bold mb-2" for="team">نام تیم (اختیاری)</label>
+                                <input class="w-full bg-gray-700 bg-opacity-50 border border-gray-600 rounded-lg py-3 px-4 text-gray-300 leading-tight focus:outline-none focus:ring-2 focus:ring-green-500" id="team" type="text" placeholder="در صورت تمایل به شرکت تیمی">
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <button class="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-lg focus:outline-none focus:shadow-outline transition duration-300" type="button">
+                                    ثبت نام و پرداخت
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="text-green-400">سوالات</span> 
+                    <span class="text-blue-400">متداول</span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-500 to-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-gray-900 bg-opacity-50 rounded-xl overflow-hidden mb-6 card-hover">
+                    <button class="w-full flex justify-between items-center p-6 focus:outline-none">
+                        <span class="text-lg font-bold text-green-400">آیا این رویداد برای افراد مبتدی مناسب است؟</span>
+                        <i class="fas fa-chevron-down text-blue-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-6 pb-6 hidden">
+                        <p class="text-gray-300">
+                            بله، این رویداد برای تمام سطوح طراحی شده است. در بخش آموزش، مفاهیم از پایه تا پیشرفته تدریس می‌شود و کارگاه‌ها به گونه‌ای طراحی شده‌اند که هم مبتدیان و هم افراد با تجربه بتوانند از آن‌ها بهره ببرند.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 bg-opacity-50 rounded-xl overflow-hidden mb-6 card-hover">
+                    <button class="w-full flex justify-between items-center p-6 focus:outline-none">
+                        <span class="text-lg font-bold text-blue-400">آیا امکان شرکت تیمی وجود دارد؟</span>
+                        <i class="fas fa-chevron-down text-green-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-6 pb-6 hidden">
+                        <p class="text-gray-300">
+                            بله، شما می‌توانید به صورت تیمی (حداکثر ۴ نفر) ثبت نام کنید. همچنین اگر تیمی ندارید، می‌توانید به صورت فردی ثبت نام کرده و در روز رویداد با سایر شرکت‌کنندگان تیم تشکیل دهید.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 bg-opacity-50 rounded-xl overflow-hidden mb-6 card-hover">
+                    <button class="w-full flex justify-between items-center p-6 focus:outline-none">
+                        <span class="text-lg font-bold text-green-400">آیا گواهی حضور ارائه می‌شود؟</span>
+                        <i class="fas fa-chevron-down text-blue-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-6 pb-6 hidden">
+                        <p class="text-gray-300">
+                            بله، به تمام شرکت‌کنندگانی که در تمامی جلسات حضور داشته باشند، گواهی معتبر پایان دوره اعطا خواهد شد. همچنین به اعضای تیم‌های برتر گواهی ویژه اهدا می‌شود.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 bg-opacity-50 rounded-xl overflow-hidden mb-6 card-hover">
+                    <button class="w-full flex justify-between items-center p-6 focus:outline-none">
+                        <span class="text-lg font-bold text-blue-400">آیا امکان بازگشت هزینه وجود دارد؟</span>
+                        <i class="fas fa-chevron-down text-green-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-6 pb-6 hidden">
+                        <p class="text-gray-300">
+                            تا ۷ روز قبل از شروع رویداد امکان کنسلی و بازگشت کامل هزینه وجود دارد. پس از این تاریخ، تنها در صورتی که فرد دیگری جایگزین شود، هزینه بازگردانده می‌شود.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900 bg-opacity-50 rounded-xl overflow-hidden mb-6 card-hover">
+                    <button class="w-full flex justify-between items-center p-6 focus:outline-none">
+                        <span class="text-lg font-bold text-green-400">آیا محتوای آموزشی پس از رویداد در اختیار شرکت‌کنندگان قرار می‌گیرد؟</span>
+                        <i class="fas fa-chevron-down text-blue-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-6 pb-6 hidden">
+                        <p class="text-gray-300">
+                            بله، تمام اسلایدها و منابع آموزشی پس از پایان رویداد در پنل کاربری هر فرد قرار خواهد گرفت. همچنین ویدیوی جلسات برای شرکت‌کنندگان ارسال می‌شود.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-900 bg-opacity-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    <span class="text-green-400">نظرات</span> 
+                    <span class="text-blue-400">شرکت‌کنندگان</span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-500 to-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 bg-opacity-50 p-8 rounded-xl card-hover">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Testimonial 1" class="w-12 h-12 rounded-full object-cover">
+                        <div class="mr-4">
+                            <h4 class="font-bold">علی رضایی</h4>
+                            <p class="text-sm text-blue-400">شرکت کننده دوره قبل</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        "این رویداد دید کاملاً جدیدی از تصمیم‌گیری استراتژیک به من داد. چالش‌های عملی بسیار جذاب بودند و باعث شدند مفاهیم را عمیقاً درک کنم."
+                    </p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 bg-opacity-50 p-8 rounded-xl card-hover">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Testimonial 2" class="w-12 h-12 rounded-full object-cover">
+                        <div class="mr-4">
+                            <h4 class="font-bold">نازنین احمدی</h4>
+                            <p class="text-sm text-green-400">تیم برتر دوره قبل</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        "به عنوان کسی که قبلاً با نظریه بازی‌ها آشنا بودم، باید بگویم این رویداد چیزهای کاملاً جدیدی به من آموخت. کیفیت آموزش و طراحی مسابقات عالی بود."
+                    </p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 bg-opacity-50 p-8 rounded-xl card-hover">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Testimonial 3" class="w-12 h-12 rounded-full object-cover">
+                        <div class="mr-4">
+                            <h4 class="font-bold">پویا محمدی</h4>
+                            <p class="text-sm text-blue-400">شرکت کننده دوره قبل</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        "فضای رقابتی اما دوستانه رویداد واقعاً انگیزه‌بخش بود. از کار تیمی گرفته تا تحلیل تصمیم‌های استراتژیک، همه چیز حرفه‌ای طراحی شده بود."
+                    </p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-8">
+                <span class="text-green-400">آماده چالش</span> 
+                <span class="text-blue-400">هستید؟</span>
+            </h2>
+            <p class="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
+                همین حالا در تورنمنت استراتژی برد ثبت نام کنید و مهارت‌های تصمیم‌گیری استراتژیک خود را به سطح جدیدی ارتقا دهید.
+            </p>
+            <a href="#register" class="inline-block px-10 py-4 bg-gradient-to-r from-green-500 to-blue-600 rounded-full text-xl font-bold hover:from-green-600 hover:to-blue-700 transition duration-300 shadow-lg hover:shadow-xl">
+                ثبت نام در رویداد
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 bg-opacity-90 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <div class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-4">
+                        استراتژی‌های برتر
+                    </div>
+                    <p class="text-gray-400 max-w-md">
+                        برگزار کننده تورنمنت‌های آموزشی-رقابتی در حوزه نظریه بازی‌ها و استراتژی‌های تصمیم‌گیری هوشمند
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-bold text-green-400 mb-4">لینک‌های سریع</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#home" class="text-gray-400 hover:text-green-400 transition duration-300">خانه</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-green-400 transition duration-300">درباره رویداد</a></li>
+                            <li><a href="#schedule" class="text-gray-400 hover:text-green-400 transition duration-300">برنامه زمانی</a></li>
+                            <li><a href="#speakers" class="text-gray-400 hover:text-green-400 transition duration-300">اساتید</a></li>
+                            <li><a href="#register" class="text-gray-400 hover:text-green-400 transition duration-300">ثبت نام</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-blue-400 mb-4">تماس با ما</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-phone ml-2 text-green-400"></i>
+                                <span>۰۹۱۲۱۲۳۴۵۶۷</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-envelope ml-2 text-green-400"></i>
+                                <span>info@strategiha.ir</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-map-marker-alt ml-2 text-green-400"></i>
+                                <span>تهران، خیابان آزادی، دانشگاه صنعتی شریف</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-green-400 mb-4">شبکه‌های اجتماعی</h3>
+                        <div class="flex space-x-4 space-x-reverse">
+                            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-green-400 hover:bg-green-500 hover:text-white transition duration-300">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-blue-400 hover:bg-blue-500 hover:text-white transition duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-green-400 hover:bg-green-500 hover:text-white transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-blue-400 hover:bg-blue-500 hover:text-white transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">© ۱۴۰۲ تمامی حقوق برای استراتژی‌های برتر محفوظ است.</p>
+                <div class="flex space-x-6 space-x-reverse">
+                    <a href="#" class="text-gray-500 hover:text-green-400 transition duration-300">قوانین و مقررات</a>
+                    <a href="#" class="text-gray-500 hover:text-green-400 transition duration-300">حریم خصوصی</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 3 + 1;
+                
+                // Random animation duration
+                const duration = Math.random() * 10 + 5;
+                
+                // Random delay
+                const delay = Math.random() * 5;
+                
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // FAQ accordion
+        function setupFAQ() {
+            const faqButtons = document.querySelectorAll('#faq button');
+            
+            faqButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const answer = button.nextElementSibling;
+                    const icon = button.querySelector('i');
+                    
+                    answer.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            });
+        }
+        
+        // Mobile menu toggle
+        function setupMobileMenu() {
+            const mobileMenuButton = document.querySelector('.md\\:hidden button');
+            const mobileMenu = document.createElement('div');
+            mobileMenu.className = 'hidden fixed inset-0 bg-gray-900 bg-opacity-90 z-50 flex flex-col items-center justify-center';
+            mobileMenu.innerHTML = `
+                <button class="absolute top-6 left-6 text-gray-300 hover:text-green-400">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+                <div class="flex flex-col items-center space-y-8">
+                    <a href="#home" class="text-2xl text-green-400 hover:text-blue-400">خانه</a>
+                    <a href="#about" class="text-2xl text-gray-300 hover:text-green-400">درباره رویداد</a>
+                    <a href="#schedule" class="text-2xl text-gray-300 hover:text-green-400">برنامه زمانی</a>
+                    <a href="#speakers" class="text-2xl text-gray-300 hover:text-green-400">اساتید</a>
+                    <a href="#register" class="text-2xl px-6 py-2 bg-gradient-to-r from-green-500 to-blue-600 rounded-full">ثبت نام</a>
+                </div>
+            `;
+            
+            document.body.appendChild(mobileMenu);
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('hidden');
+            });
+            
+            mobileMenu.querySelector('button').addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+        
+        // Smooth scrolling
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            setupFAQ();
+            setupMobileMenu();
+            setupSmoothScrolling();
+        });
+    </script>
+</body>
+</html>
