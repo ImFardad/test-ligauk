@@ -7,187 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @font-face {
-            font-family: 'Vazir';
-            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-        }
-        
-        body {
-            font-family: 'Vazir', sans-serif;
-            background-color: #0a192f;
-            color: #e6f1ff;
-            overflow-x: hidden;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #0a192f 0%, #112240 50%, #233554 100%);
-        }
-        
-        .hero-bg {
-            background: radial-gradient(circle at 70% 50%, rgba(16, 185, 129, 0.1) 0%, rgba(0, 0, 0, 0) 50%),
-                        radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.1) 0%, rgba(0, 0, 0, 0) 50%);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-            background: rgba(17, 34, 64, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(100, 255, 218, 0.1);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.2);
-            border: 1px solid rgba(100, 255, 218, 0.3);
-        }
-        
-        .animated-border {
-            position: relative;
-        }
-        
-        .animated-border::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
-            transition: width 0.3s ease;
-        }
-        
-        .animated-border:hover::after {
-            width: 100%;
-            left: 0;
-        }
-        
-        .floating {
-            animation: floating 6s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .floating-delay-1 {
-            animation-delay: 1s;
-        }
-        
-        .floating-delay-2 {
-            animation-delay: 2s;
-        }
-        
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        
-        .particle {
-            position: absolute;
-            background: rgba(100, 255, 218, 0.5);
-            border-radius: 50%;
-            animation: particle-animation linear infinite;
-        }
-        
-        @keyframes particle-animation {
-            0% { transform: translateY(0) translateX(0); opacity: 1; }
-            100% { transform: translateY(-1000px) translateX(100px); opacity: 0; }
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            right: -15px;
-            top: 0;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-            border: 3px solid #0a192f;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 30px;
-            width: 2px;
-            height: calc(100% - 30px);
-            background: linear-gradient(to bottom, #10b981, #3b82f6);
-        }
-        
-        .timeline-item:last-child::after {
-            display: none;
-        }
-        
-        .glow-text {
-            text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
-        }
-        
-        .glow-box {
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
-        }
-        
-        .input-field {
-            background: rgba(17, 34, 64, 0.7);
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .input-field:focus {
-            border: 1px solid rgba(100, 255, 218, 0.5);
-            box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
-        }
-        
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            right: 50%;
-            transform: translateX(50%);
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(50%); }
-            40% { transform: translateY(-20px) translateX(50%); }
-            60% { transform: translateY(-10px) translateX(50%); }
-        }
-        
-        .social-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-5px) scale(1.1);
-        }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-    </style>
+    <!-- لینک به فایل استایل خارجی -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="gradient-bg">
     <!-- Particles Background -->
@@ -375,7 +196,7 @@
                         <div class="flex items-center mb-6">
                             <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
                             <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
                         </div>
                         <div class="bg-[#112240] rounded-lg p-4 mb-6">
                             <div class="flex items-center mb-4">
@@ -442,10 +263,10 @@
             </div>
             
             <div class="relative max-w-3xl mx-auto">
-                <div class="absolute right-1/2 md:right-0 h-full w-0.5 bg-gradient-to-b from-[#10b981] to-[#3b82f6] transform translate-x-1/2 md:translate-x-0"></div>
+                <div class="absolute right-1/2 md:right-0 h-full w-0.5 bg-gradient-to-b from-[#10b981] to-[#3b82f6] transform translate-x-1/2 md:translate-x-4"></div>
                 
                 <div class="space-y-8">
-                    <div class="relative timeline-item pr-10 md:pr-0 md:pl-10">
+                    <div class="relative timeline-item pr-10 md:pr-4 md:pl-10 md:translate-x-4">
                         <div class="card-hover p-6 rounded-xl">
                             <div class="flex items-center mb-2">
                                 <span class="bg-[#10b981] text-white text-sm font-bold px-3 py-1 rounded-full">مرحله اول</span>
@@ -458,7 +279,7 @@
                         </div>
                     </div>
                     
-                    <div class="relative timeline-item pr-10 md:pr-0 md:pl-10">
+                    <div class="relative timeline-item pr-10 md:pr-4 md:pl-10 md:translate-x-4">
                         <div class="card-hover p-6 rounded-xl">
                             <div class="flex items-center mb-2">
                                 <span class="bg-[#3b82f6] text-white text-sm font-bold px-3 py-1 rounded-full">مرحله دوم</span>
@@ -471,7 +292,7 @@
                         </div>
                     </div>
                     
-                    <div class="relative timeline-item pr-10 md:pr-0 md:pl-10">
+                    <div class="relative timeline-item pr-10 md:pr-4 md:pl-10 md:translate-x-4">
                         <div class="card-hover p-6 rounded-xl">
                             <div class="flex items-center mb-2">
                                 <span class="bg-[#f59e0b] text-white text-sm font-bold px-3 py-1 rounded-full">مرحله سوم</span>
@@ -484,7 +305,7 @@
                         </div>
                     </div>
                     
-                    <div class="relative timeline-item pr-10 md:pr-0 md:pl-10">
+                    <div class="relative timeline-item pr-10 md:pr-4 md:pl-10 md:translate-x-4">
                         <div class="card-hover p-6 rounded-xl">
                             <div class="flex items-center mb-2">
                                 <span class="bg-[#ec4899] text-white text-sm font-bold px-3 py-1 rounded-full">مرحله نهایی</span>
@@ -790,130 +611,7 @@
         </div>
     </div>
     
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-        
-        // FAQ accordion
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const icon = question.querySelector('i');
-                
-                answer.classList.toggle('hidden');
-                icon.classList.toggle('transform');
-                icon.classList.toggle('rotate-180');
-            });
-        });
-        
-        // Team fields toggle
-        const participationType = document.querySelectorAll('input[name="participation-type"]');
-        const teamFields = document.getElementById('team-fields');
-        
-        participationType.forEach(radio => {
-            radio.addEventListener('change', () => {
-                if (document.getElementById('team').checked) {
-                    teamFields.classList.remove('hidden');
-                } else {
-                    teamFields.classList.add('hidden');
-                }
-            });
-        });
-        
-        // Form submission
-        document.getElementById('registration-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('success-modal').classList.remove('hidden');
-        });
-        
-        // Close modal
-        document.getElementById('close-modal').addEventListener('click', function() {
-            document.getElementById('success-modal').classList.add('hidden');
-        });
-        
-        document.getElementById('modal-ok').addEventListener('click', function() {
-            document.getElementById('success-modal').classList.add('hidden');
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu if open
-                if (!document.getElementById('mobile-menu').classList.contains('hidden')) {
-                    document.getElementById('mobile-menu').classList.add('hidden');
-                }
-            });
-        });
-        
-        // Create particles
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random size between 2px and 5px
-                const size = Math.random() * 3 + 2;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Random position
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                
-                // Random animation duration between 10s and 20s
-                const duration = Math.random() * 10 + 10;
-                particle.style.animationDuration = `${duration}s`;
-                
-                // Random delay
-                particle.style.animationDelay = `${Math.random() * 5}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-        
-        // Initialize particles when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-            
-            // Initialize ScrollReveal
-            ScrollReveal().reveal('.card-hover', {
-                delay: 200,
-                distance: '20px',
-                origin: 'bottom',
-                interval: 100,
-                easing: 'cubic-bezier(0.5, 0, 0, 1)',
-                opacity: 0,
-                scale: 0.9
-            });
-            
-            ScrollReveal().reveal('h1, h2, h3', {
-                delay: 100,
-                distance: '20px',
-                origin: 'bottom',
-                easing: 'cubic-bezier(0.5, 0, 0, 1)',
-                opacity: 0
-            });
-            
-            ScrollReveal().reveal('p', {
-                delay: 200,
-                distance: '10px',
-                origin: 'bottom',
-                easing: 'cubic-bezier(0.5, 0, 0, 1)',
-                opacity: 0
-            });
-        });
-    </script>
+    <!-- لینک به فایل جاوا اسکریپت خارجی -->
+    <script src="script.js"></script>
 </body>
 </html>
