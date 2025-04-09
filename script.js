@@ -7,11 +7,13 @@ document.getElementById('mobile-menu-button').addEventListener('click', () => {
 const faqQuestions = document.querySelectorAll('.faq-question');
 faqQuestions.forEach(question => {
   question.addEventListener('click', () => {
-    // فرض کنید عنصر FAQ-answer دقیقا بعد از دکمه سوال قرار دارد
+    // فرض شده است که عنصر faq-answer دقیقاً بعد از دکمه سوال قرار دارد
     const answer = question.nextElementSibling;
     const icon = question.querySelector('i');
     
+    // تغییر وضعیت FAQ-answer از طریق toggling کلاس open
     answer.classList.toggle('open');
+    // چرخش آیکون
     icon.classList.toggle('rotate-180');
   });
 });
@@ -50,7 +52,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     document.querySelector(anchor.getAttribute('href')).scrollIntoView({
       behavior: 'smooth'
     });
-    // اگر منوی موبایل باز است آن را ببندید
+    // در صورت باز بودن منوی موبایل، آن را ببندید.
     if (!document.getElementById('mobile-menu').classList.contains('hidden')) {
       document.getElementById('mobile-menu').classList.add('hidden');
     }
@@ -81,7 +83,7 @@ function createParticles() {
 }
 document.addEventListener('DOMContentLoaded', () => {
   createParticles();
-  // Initialize ScrollReveal برای انیمیشن‌های دیگر (اختیاری)
+  // Initialize ScrollReveal (اختیاری) برای انیمیشن‌های دیگر
   ScrollReveal().reveal('.card-hover', {
     delay: 200,
     distance: '20px',
