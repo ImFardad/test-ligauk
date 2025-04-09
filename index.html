@@ -1,617 +1,634 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لیگک - مسابقه آموزشی نظریه بازی و استراتژی برد</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- لینک به فایل استایل خارجی -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لیگک</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- لینک به فایل CSS خارجی -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="gradient-bg">
-    <!-- Particles Background -->
-    <div id="particles" class="particles"></div>
-    
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-[#0a192f]/90 backdrop-blur-md border-b border-[#1e2b47]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <a href="#" class="flex items-center space-x-2">
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center">
-                            <i class="fas fa-chess-queen text-white text-xl"></i>
-                        </div>
-                        <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">لیگک</span>
-                    </a>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium animated-border">درباره مسابقه</a>
-                    <a href="#features" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium animated-border">ویژگی‌ها</a>
-                    <a href="#timeline" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium animated-border">زمان‌بندی</a>
-                    <a href="#faq" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium animated-border">سوالات متداول</a>
-                    <a href="#register" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium animated-border">ثبت نام</a>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
+  <!-- Particles Background -->
+  <div id="particles" class="particles"></div>
+  
+  <!-- Navigation -->
+  <nav class="fixed w-full z-50 bg-[#0a192f]/90 backdrop-blur-md border-b border-[#1e2b47]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="#" class="flex items-center space-x-2">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center">
+              <i class="fas fa-chess-queen text-white text-xl"></i>
             </div>
+            <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">لیگک</span>
+          </a>
         </div>
-        
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-[#112240] border-t border-[#1e2b47]">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">درباره مسابقه</a>
-                <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">ویژگی‌ها</a>
-                <a href="#timeline" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">زمان‌بندی</a>
-                <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">سوالات متداول</a>
-                <a href="#register" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">ثبت نام</a>
-            </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#about" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium animated-border">درباره مسابقه</a>
+          <a href="#features" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium animated-border">ویژگی‌ها</a>
+          <a href="#timeline" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium animated-border">زمان‌بندی</a>
+          <a href="#faq" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium animated-border">سوالات متداول</a>
+          <a href="#register" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium animated-border">ثبت نام</a>
         </div>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 glow-text">لیگک</span><br>
-                        مسابقه آموزشی نظریه بازی و استراتژی برد
-                    </h1>
-                    <p class="text-lg text-gray-300 mb-8">
-                        در این مسابقه هیجان‌انگیز، قدرت تحلیل و تصمیم‌گیری استراتژیک خود را محک بزنید و در رقابتی جذاب با سایر شرکت‌کنندگان، جایزه‌های ارزشمند را از آن خود کنید!
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#register" class="btn-primary px-8 py-3 rounded-full font-bold text-white">ثبت نام کنید</a>
-                        <a href="#about" class="px-8 py-3 rounded-full font-bold border border-[#3b82f6] text-[#3b82f6] hover:bg-[#3b82f6]/10 transition-all">اطلاعات بیشتر</a>
-                    </div>
-                </div>
-                <div class="md:w-1/2 relative">
-                    <div class="relative w-full max-w-md mx-auto">
-                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#10b981] rounded-full filter blur-3xl opacity-20"></div>
-                        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#3b82f6] rounded-full filter blur-3xl opacity-20"></div>
-                        <div class="relative bg-[#112240]/50 backdrop-blur-md rounded-2xl overflow-hidden border border-[#1e2b47] glow-box">
-                            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="لیگک" class="w-full h-auto rounded-2xl">
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0a192f] to-transparent"></div>
-                            <div class="absolute bottom-0 right-0 p-6">
-                                <h3 class="text-xl font-bold text-white">رقابتی متفاوت در دنیای استراتژی</h3>
-                                <p class="text-gray-300 mt-2">یادگیری عمیق نظریه بازی‌ها در محیطی رقابتی و جذاب</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+            <i class="fas fa-bars"></i>
+          </button>
         </div>
-        
-        <div class="scroll-down">
-            <a href="#about" class="text-gray-400 hover:text-white">
-                <i class="fas fa-chevron-down text-2xl"></i>
-            </a>
-        </div>
-        
-        <div class="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#0a192f] to-transparent"></div>
-    </section>
-    
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-[#0a192f]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">مسابقه <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">لیگک</span> چیست؟</h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-6"></div>
-                <p class="max-w-3xl mx-auto text-gray-300 text-lg">
-                    لیگک یک مسابقه آموزشی در حوزه نظریه بازی‌ها و استراتژی‌های برد است که به صورت تیمی و فردی برگزار می‌شود. در این مسابقه، شرکت‌کنندگان با حل چالش‌های استراتژیک و تحلیل موقعیت‌های مختلف بازی، مهارت‌های تصمیم‌گیری خود را تقویت می‌کنند.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="card-hover p-8 rounded-xl transition-all duration-300">
-                    <div class="w-16 h-16 bg-[#112240] rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-brain feature-icon"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-center mb-4">تقویت تفکر استراتژیک</h3>
-                    <p class="text-gray-300 text-center">
-                        با حل مسائل مختلف نظریه بازی‌ها، توانایی تحلیل و تصمیم‌گیری استراتژیک خود را در موقعیت‌های پیچیده بهبود بخشید.
-                    </p>
-                </div>
-                
-                <div class="card-hover p-8 rounded-xl transition-all duration-300">
-                    <div class="w-16 h-16 bg-[#112240] rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-trophy feature-icon"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-center mb-4">جوایز ارزشمند</h3>
-                    <p class="text-gray-300 text-center">
-                        به برندگان مسابقه جوایز نقدی و غیرنقدی ارزشمند و همچنین فرصت‌های شغلی در شرکت‌های معتبر اعطا می‌شود.
-                    </p>
-                </div>
-                
-                <div class="card-hover p-8 rounded-xl transition-all duration-300">
-                    <div class="w-16 h-16 bg-[#112240] rounded-full flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-users feature-icon"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-center mb-4">جامعه حرفه‌ای</h3>
-                    <p class="text-gray-300 text-center">
-                        به جامعه‌ای از افراد علاقه‌مند به استراتژی و نظریه بازی‌ها بپیوندید و شبکه ارتباطی خود را گسترش دهید.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Features Section -->
-    <section id="features" class="py-20 bg-[#112240]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">ویژگی‌های <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">مسابقه</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-6"></div>
-                <p class="max-w-3xl mx-auto text-gray-300 text-lg">
-                    لیگک با ویژگی‌های منحصر به فرد خود، تجربه‌ای متفاوت از یادگیری نظریه بازی‌ها و استراتژی‌های برد ارائه می‌دهد.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8">
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 bg-[#0a192f] rounded-lg p-3 mr-4">
-                            <i class="fas fa-chess text-[#3b82f6] text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">چالش‌های متنوع</h3>
-                            <p class="text-gray-300">
-                                مسائل و چالش‌های طراحی شده در مسابقه، طیف گسترده‌ای از سناریوهای واقعی و تئوریک را پوشش می‌دهند.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 bg-[#0a192f] rounded-lg p-3 mr-4">
-                            <i class="fas fa-chart-line text-[#10b981] text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">سیستم رتبه‌بندی پویا</h3>
-                            <p class="text-gray-300">
-                                سیستم رتبه‌بندی هوشمند که عملکرد شما را در طول مسابقه ارزیابی و رتبه‌بندی می‌کند.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 bg-[#0a192f] rounded-lg p-3 mr-4">
-                            <i class="fas fa-graduation-cap text-[#3b82f6] text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">محتوای آموزشی اختصاصی</h3>
-                            <p class="text-gray-300">
-                                دسترسی به محتوای آموزشی تخصصی در حوزه نظریه بازی‌ها و استراتژی‌های تصمیم‌گیری.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="relative">
-                    <div class="relative bg-[#0a192f]/50 backdrop-blur-md rounded-2xl overflow-hidden border border-[#1e2b47] p-6 glow-box">
-                        <div class="flex items-center mb-6">
-                            <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
-                        </div>
-                        <div class="bg-[#112240] rounded-lg p-4 mb-6">
-                            <div class="flex items-center mb-4">
-                                <div class="w-8 h-8 rounded-full bg-[#3b82f6]/20 flex items-center justify-center mr-3">
-                                    <i class="fas fa-user text-[#3b82f6]"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold">سیستم رتبه‌بندی</h4>
-                                    <p class="text-xs text-gray-400">آخرین به‌روزرسانی: امروز</p>
-                                </div>
-                            </div>
-                            <div class="space-y-4">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center">
-                                        <span class="w-6 h-6 bg-[#10b981] rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">1</span>
-                                        <span>تیم استراتژیست‌ها</span>
-                                    </div>
-                                    <span class="text-[#10b981] font-bold">2450 امتیاز</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center">
-                                        <span class="w-6 h-6 bg-[#3b82f6] rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">2</span>
-                                        <span>تیم تحلیل‌گران</span>
-                                    </div>
-                                    <span class="text-[#3b82f6] font-bold">2310 امتیاز</span>
-                                </div>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center">
-                                        <span class="w-6 h-6 bg-[#f59e0b] rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">3</span>
-                                        <span>تیم تصمیم‌سازان</span>
-                                    </div>
-                                    <span class="text-[#f59e0b] font-bold">2150 امتیاز</span>
-                                </div>
-                                <div class="flex items-center justify-between opacity-70">
-                                    <div class="flex items-center">
-                                        <span class="w-6 h-6 bg-gray-500 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">4</span>
-                                        <span>شما</span>
-                                    </div>
-                                    <span class="text-gray-400">ثبت‌نام کنید!</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <button class="btn-primary px-6 py-2 rounded-full text-sm font-bold">مشاهده جدول کامل</button>
-                        </div>
-                    </div>
-                    
-                    <div class="absolute -top-6 -right-6 w-24 h-24 bg-[#10b981] rounded-full filter blur-3xl opacity-10 z-0"></div>
-                    <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-[#3b82f6] rounded-full filter blur-3xl opacity-10 z-0"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Timeline Section -->
-    <section id="timeline" class="py-20 bg-[#0a192f]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">زمان‌بندی <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">مسابقه</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-6"></div>
-                <p class="max-w-3xl mx-auto text-gray-300 text-lg">
-                    برنامه زمانی مسابقه لیگک و مراحل مختلف آن را در این بخش مشاهده می‌کنید.
-                </p>
-            </div>
-            
-            <div class="relative max-w-3xl mx-auto">
-                <div class="absolute right-1/2 md:right-0 h-full w-0.5 bg-gradient-to-b from-[#10b981] to-[#3b82f6] transform translate-x-1/2 md:translate-x-4"></div>
-                
-                <div class="space-y-8">
-                    <div class="relative timeline-item pr-10 md:pr-4 md:pl-10 md:translate-x-4">
-                        <div class="card-hover p-6 rounded-xl">
-                            <div class="flex items-center mb-2">
-                                <span class="bg-[#10b981] text-white text-sm font-bold px-3 py-1 rounded-full">مرحله اول</span>
-                                <span class="text-[#10b981] text-sm font-bold mr-2">15 مرداد - 30 مرداد 1402</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2">ثبت‌نام و آزمون اولیه</h3>
-                            <p class="text-gray-300">
-                                ثبت‌نام در مسابقه و شرکت در آزمون آنلاین سنجش سطح دانش پایه نظریه بازی‌ها
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="relative timeline-item pr-10 md:pr-4 md:pl-10 md:translate-x-4">
-                        <div class="card-hover p-6 rounded-xl">
-                            <div class="flex items-center mb-2">
-                                <span class="bg-[#3b82f6] text-white text-sm font-bold px-3 py-1 rounded-full">مرحله دوم</span>
-                                <span class="text-[#3b82f6] text-sm font-bold mr-2">5 شهریور - 20 شهریور 1402</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2">دوره آموزشی مقدماتی</h3>
-                            <p class="text-gray-300">
-                                شرکت در دوره آموزشی آنلاین و آشنایی با مفاهیم پیشرفته‌تر نظریه بازی‌ها
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="relative timeline-item pr-10 md:pr-4 md:pl-10 md:translate-x-4">
-                        <div class="card-hover p-6 rounded-xl">
-                            <div class="flex items-center mb-2">
-                                <span class="bg-[#f59e0b] text-white text-sm font-bold px-3 py-1 rounded-full">مرحله سوم</span>
-                                <span class="text-[#f59e0b] text-sm font-bold mr-2">25 شهریور - 10 مهر 1402</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2">چالش‌های تیمی</h3>
-                            <p class="text-gray-300">
-                                حل چالش‌های استراتژیک به صورت تیمی و رقابت با سایر تیم‌ها
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="relative timeline-item pr-10 md:pr-4 md:pl-10 md:translate-x-4">
-                        <div class="card-hover p-6 rounded-xl">
-                            <div class="flex items-center mb-2">
-                                <span class="bg-[#ec4899] text-white text-sm font-bold px-3 py-1 rounded-full">مرحله نهایی</span>
-                                <span class="text-[#ec4899] text-sm font-bold mr-2">15 مهر - 25 مهر 1402</span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2">مسابقه نهایی و اعلام نتایج</h3>
-                            <p class="text-gray-300">
-                                رقابت نهایی میان تیم‌های برتر و اعلام نتایج و اعطای جوایز
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- FAQ Section -->
-    <section id="faq" class="py-20 bg-[#112240]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">سوالات <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">متداول</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-6"></div>
-                <p class="max-w-3xl mx-auto text-gray-300 text-lg">
-                    پاسخ به پرتکرارترین سوالات شما درباره مسابقه لیگک
-                </p>
-            </div>
-            
-            <div class="max-w-3xl mx-auto space-y-4">
-                <div class="card-hover rounded-xl overflow-hidden transition-all duration-300">
-                    <button class="faq-question w-full text-right p-6 flex items-center justify-between">
-                        <span class="text-lg font-bold">شرایط شرکت در مسابقه چیست؟</span>
-                        <i class="fas fa-chevron-down text-[#3b82f6] transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-answer px-6 pb-6 hidden">
-                        <p class="text-gray-300">
-                            شرکت در مسابقه لیگک برای تمامی افراد بالای 18 سال که دانش پایه‌ای در زمینه ریاضیات و تحلیل دارند آزاد است. نیاز به مدرک خاصی نیست اما شرکت در آزمون اولیه الزامی است.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="card-hover rounded-xl overflow-hidden transition-all duration-300">
-                    <button class="faq-question w-full text-right p-6 flex items-center justify-between">
-                        <span class="text-lg font-bold">آیا می‌توان به صورت تیمی ثبت‌نام کرد؟</span>
-                        <i class="fas fa-chevron-down text-[#3b82f6] transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-answer px-6 pb-6 hidden">
-                        <p class="text-gray-300">
-                            بله، مسابقه در دو بخش فردی و تیمی برگزار می‌شود. تیم‌ها می‌توانند از 2 تا 4 نفر تشکیل شوند. اعضای تیم باید در زمان ثبت‌نام مشخص شوند.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="card-hover rounded-xl overflow-hidden transition-all duration-300">
-                    <button class="faq-question w-full text-right p-6 flex items-center justify-between">
-                        <span class="text-lg font-bold">هزینه ثبت‌نام چقدر است؟</span>
-                        <i class="fas fa-chevron-down text-[#3b82f6] transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-answer px-6 pb-6 hidden">
-                        <p class="text-gray-300">
-                            ثبت‌نام در مسابقه لیگک کاملاً رایگان است و هیچ هزینه‌ای برای شرکت‌کنندگان ندارد. تمامی مراحل مسابقه و محتوای آموزشی به صورت رایگان ارائه می‌شود.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="card-hover rounded-xl overflow-hidden transition-all duration-300">
-                    <button class="faq-question w-full text-right p-6 flex items-center justify-between">
-                        <span class="text-lg font-bold">آیا به شرکت‌کنندگان گواهی نامه اعطا می‌شود؟</span>
-                        <i class="fas fa-chevron-down text-[#3b82f6] transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-answer px-6 pb-6 hidden">
-                        <p class="text-gray-300">
-                            بله، به تمامی شرکت‌کنندگانی که حداقل 80% مراحل مسابقه را تکمیل کنند، گواهی نامه معتبر شرکت در مسابقه لیگک اعطا خواهد شد. گواهی‌نامه‌های برندگان نیز دارای امتیازات ویژه‌ای خواهد بود.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="card-hover rounded-xl overflow-hidden transition-all duration-300">
-                    <button class="faq-question w-full text-right p-6 flex items-center justify-between">
-                        <span class="text-lg font-bold">منابع آموزشی مسابقه از کجا قابل دسترسی است؟</span>
-                        <i class="fas fa-chevron-down text-[#3b82f6] transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-answer px-6 pb-6 hidden">
-                        <p class="text-gray-300">
-                            پس از ثبت‌نام و تأیید آزمون اولیه، به پنل کاربری شما در سایت مسابقه دسترسی داده می‌شود که شامل تمامی منابع آموزشی، ویدئوها، مقالات و تمرین‌های مورد نیاز است.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Register Section -->
-    <section id="register" class="py-20 bg-gradient-to-b from-[#0a192f] to-[#112240]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">ثبت‌نام در <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">مسابقه</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-6"></div>
-                <p class="max-w-3xl mx-auto text-gray-300 text-lg">
-                    فرم زیر را پر کنید تا در مسابقه لیگک ثبت‌نام کنید. پس از ثبت‌نام، اطلاعات بیشتر به ایمیل شما ارسال خواهد شد.
-                </p>
-            </div>
-            
-            <div class="max-w-2xl mx-auto">
-                <div class="card-hover rounded-xl p-8 glow-box">
-                    <form id="registration-form" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="first-name" class="block text-sm font-medium text-gray-300 mb-2">نام</label>
-                                <input type="text" id="first-name" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none" required>
-                            </div>
-                            <div>
-                                <label for="last-name" class="block text-sm font-medium text-gray-300 mb-2">نام خانوادگی</label>
-                                <input type="text" id="last-name" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none" required>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">ایمیل</label>
-                            <input type="email" id="email" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none" required>
-                        </div>
-                        
-                        <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-300 mb-2">شماره تماس</label>
-                            <input type="tel" id="phone" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none" required>
-                        </div>
-                        
-                        <div>
-                            <label for="education" class="block text-sm font-medium text-gray-300 mb-2">میزان تحصیلات</label>
-                            <select id="education" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none" required>
-                                <option value="" selected disabled>انتخاب کنید</option>
-                                <option value="diploma">دیپلم</option>
-                                <option value="bachelor">کارشناسی</option>
-                                <option value="master">کارشناسی ارشد</option>
-                                <option value="phd">دکترا</option>
-                                <option value="other">سایر</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-sm font-medium text-gray-300 mb-2">نحوه شرکت</label>
-                            <div class="space-y-3">
-                                <div class="flex items-center">
-                                    <input id="individual" name="participation-type" type="radio" class="h-4 w-4 text-[#3b82f6] focus:ring-[#3b82f6]" checked>
-                                    <label for="individual" class="mr-2 block text-sm text-gray-300">فردی</label>
-                                </div>
-                                <div class="flex items-center">
-                                    <input id="team" name="participation-type" type="radio" class="h-4 w-4 text-[#3b82f6] focus:ring-[#3b82f6]">
-                                    <label for="team" class="mr-2 block text-sm text-gray-300">تیمی</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div id="team-fields" class="hidden space-y-4">
-                            <div>
-                                <label for="team-name" class="block text-sm font-medium text-gray-300 mb-2">نام تیم</label>
-                                <input type="text" id="team-name" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none">
-                            </div>
-                            <div>
-                                <label for="team-members" class="block text-sm font-medium text-gray-300 mb-2">اعضای تیم (ایمیل یا شماره تماس)</label>
-                                <textarea id="team-members" rows="3" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none"></textarea>
-                                <p class="mt-1 text-xs text-gray-400">اطلاعات اعضا را با کاما (,) از هم جدا کنید</p>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label for="experience" class="block text-sm font-medium text-gray-300 mb-2">سابقه در نظریه بازی‌ها</label>
-                            <textarea id="experience" rows="3" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none" placeholder="در صورت داشتن سابقه در نظریه بازی‌ها یا مسابقات مشابه، توضیح دهید"></textarea>
-                        </div>
-                        
-                        <div class="flex items-center">
-                            <input id="terms" type="checkbox" class="h-4 w-4 text-[#3b82f6] focus:ring-[#3b82f6] rounded" required>
-                            <label for="terms" class="mr-2 block text-sm text-gray-300">
-                                با <a href="#" class="text-[#3b82f6] hover:underline">قوانین و شرایط</a> مسابقه موافقم
-                            </label>
-                        </div>
-                        
-                        <div>
-                            <button type="submit" class="w-full btn-primary px-6 py-3 rounded-lg font-bold text-white mt-4">
-                                ثبت‌نام در مسابقه
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Sponsors Section -->
-    <section class="py-16 bg-[#112240]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl md:text-3xl font-bold mb-4">حامیان <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">مسابقه</span></h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-6"></div>
-            </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center">
-                <div class="flex items-center justify-center p-4 bg-[#0a192f]/50 rounded-xl border border-[#1e2b47] h-24">
-                    <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">شرکت الف</span>
-                </div>
-                <div class="flex items-center justify-center p-4 bg-[#0a192f]/50 rounded-xl border border-[#1e2b47] h-24">
-                    <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">شرکت ب</span>
-                </div>
-                <div class="flex items-center justify-center p-4 bg-[#0a192f]/50 rounded-xl border border-[#1e2b47] h-24">
-                    <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">شرکت ج</span>
-                </div>
-                <div class="flex items-center justify-center p-4 bg-[#0a192f]/50 rounded-xl border border-[#1e2b47] h-24">
-                    <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">شرکت د</span>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer class="bg-[#0a192f] border-t border-[#1e2b47]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-                <div class="md:col-span-2">
-                    <a href="#" class="flex items-center space-x-2 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center">
-                            <i class="fas fa-chess-queen text-white text-xl"></i>
-                        </div>
-                        <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">لیگک</span>
-                    </a>
-                    <p class="text-gray-300 mb-6">
-                        مسابقه آموزشی نظریه بازی و استراتژی برد لیگک، فرصتی استثنایی برای تقویت مهارت‌های تحلیلی و تصمیم‌گیری استراتژیک در محیطی رقابتی و جذاب.
-                    </p>
-                    <div class="flex space-x-4 space-x-reverse">
-                        <a href="#" class="social-icon w-10 h-10 bg-[#112240] rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-[#3b82f6]">
-                            <i class="fab fa-telegram"></i>
-                        </a>
-                        <a href="#" class="social-icon w-10 h-10 bg-[#112240] rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-[#1da1f2]">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon w-10 h-10 bg-[#112240] rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-[#4267b2]">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon w-10 h-10 bg-[#112240] rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-[#0077b5]">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-bold text-white mb-6">لینک‌های سریع</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#about" class="text-gray-300 hover:text-white animated-border inline-block">درباره مسابقه</a></li>
-                        <li><a href="#features" class="text-gray-300 hover:text-white animated-border inline-block">ویژگی‌ها</a></li>
-                        <li><a href="#timeline" class="text-gray-300 hover:text-white animated-border inline-block">زمان‌بندی</a></li>
-                        <li><a href="#faq" class="text-gray-300 hover:text-white animated-border inline-block">سوالات متداول</a></li>
-                        <li><a href="#register" class="text-gray-300 hover:text-white animated-border inline-block">ثبت نام</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-bold text-white mb-6">تماس با ما</h3>
-                    <ul class="space-y-3 text-gray-300">
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt mt-1 mr-2 text-[#3b82f6]"></i>
-                            <span>تهران، خیابان آزادی، دانشگاه صنعتی شریف</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-phone mr-2 text-[#3b82f6]"></i>
-                            <span>021-44200000</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-envelope mr-2 text-[#3b82f6]"></i>
-                            <span>info@leaguek.ir</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-[#1e2b47] mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm mb-4 md:mb-0">
-                    © ۱۴۰۲ کلیه حقوق برای مسابقه لیگک محفوظ است.
-                </p>
-                <div class="flex space-x-6 space-x-reverse">
-                    <a href="#" class="text-gray-400 hover:text-white text-sm">قوانین و مقررات</a>
-                    <a href="#" class="text-gray-400 hover:text-white text-sm">حریم خصوصی</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    <!-- Success Modal -->
-    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black/50 backdrop-blur-sm">
-        <div class="bg-[#112240] rounded-2xl max-w-md w-full mx-4 p-8 relative border border-[#10b981]/30 glow-box">
-            <button id="close-modal" class="absolute left-4 top-4 text-gray-400 hover:text-white">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="text-center">
-                <div class="w-20 h-20 bg-[#10b981]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i class="fas fa-check-circle text-4xl text-[#10b981]"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-4">ثبت‌نام شما با موفقیت انجام شد!</h3>
-                <p class="text-gray-300 mb-6">
-                    اطلاعات ثبت‌نام و دستورالعمل‌های بعدی به ایمیل شما ارسال شد. لطفاً صندوق ورودی و اسپم خود را بررسی کنید.
-                </p>
-                <button id="modal-ok" class="btn-primary px-6 py-2 rounded-full font-bold text-white">
-                    متوجه شدم
-                </button>
-            </div>
-        </div>
+      </div>
     </div>
     
-    <!-- لینک به فایل جاوا اسکریپت خارجی -->
-    <script src="script.js"></script>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#112240] border-t border-[#1e2b47]">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">درباره مسابقه</a>
+        <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">ویژگی‌ها</a>
+        <a href="#timeline" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">زمان‌بندی</a>
+        <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">سوالات متداول</a>
+        <a href="#register" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">ثبت نام</a>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Hero Section -->
+  <section class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-10 md:mb-0">
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 glow-text">لیگک</span><br>
+            نظریه بازی و استراتژی برد
+          </h1>
+          <p class="text-lg text-gray-300 mb-8">
+            در این مسابقه هیجان‌انگیز، قدرت تحلیل و تصمیم‌گیری استراتژیک خود را محک بزنید و در رقابتی جذاب با سایر شرکت‌کنندگان، جایزه‌های ارزشمند را از آن خود کنید!
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#register" class="btn-primary px-8 py-3 rounded-full font-bold text-white">ثبت نام کنید</a>
+            <a href="#about" class="px-8 py-3 rounded-full font-bold border border-[#3b82f6] text-[#3b82f6] hover:bg-[#3b82f6]/10 transition-all">اطلاعات بیشتر</a>
+          </div>
+        </div>
+        <div class="md:w-1/2 relative">
+          <div class="relative w-full max-w-md mx-auto">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#10b981] rounded-full filter blur-3xl opacity-20"></div>
+            <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-[#3b82f6] rounded-full filter blur-3xl opacity-20"></div>
+            <div class="relative bg-[#112240]/50 backdrop-blur-md rounded-2xl overflow-hidden border border-[#1e2b47] glow-box">
+              <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80" alt="لیگک" class="w-full h-auto rounded-2xl" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0a192f] to-transparent"></div>
+              <div class="absolute bottom-0 right-0 p-6">
+                <h3 class="text-xl font-bold text-white">رقابتی متفاوت در دنیای استراتژی</h3>
+                <p class="text-gray-300 mt-2">یادگیری عمیق نظریه بازی‌ها در محیطی رقابتی و جذاب</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="scroll-down">
+      <a href="#about" class="text-gray-400 hover:text-white">
+        <i class="fas fa-chevron-down text-2xl"></i>
+      </a>
+    </div>
+    
+    <div class="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#0a192f] to-transparent"></div>
+  </section>
+  
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-[#0a192f]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">لیگک</span> چیست؟
+        </h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-6"></div>
+        <p class="max-w-3xl mx-auto text-gray-300 text-lg">
+          لیگک یک مسابقه آموزشی در حوزه نظریه بازی‌ها و استراتژی‌های برد است که به صورت تیمی و فردی برگزار می‌شود. در این مسابقه، شرکت‌کنندگان با حل چالش‌های استراتژیک و تحلیل موقعیت‌های مختلف بازی، مهارت‌های تصمیم‌گیری خود را تقویت می‌کنند.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="card-hover p-8 rounded-xl transition-all duration-300">
+          <div class="w-16 h-16 bg-[#112240] rounded-full flex items-center justify-center mb-6 mx-auto">
+            <i class="fas fa-brain feature-icon"></i>
+          </div>
+          <h3 class="text-xl font-bold text-center mb-4">تقویت تفکر استراتژیک</h3>
+          <p class="text-gray-300 text-center">
+            با حل مسائل مختلف نظریه بازی‌ها، توانایی تحلیل و تصمیم‌گیری استراتژیک خود را در موقعیت‌های پیچیده بهبود بخشید.
+          </p>
+        </div>
+        
+        <div class="card-hover p-8 rounded-xl transition-all duration-300">
+          <div class="w-16 h-16 bg-[#112240] rounded-full flex items-center justify-center mb-6 mx-auto">
+            <i class="fas fa-trophy feature-icon"></i>
+          </div>
+          <h3 class="text-xl font-bold text-center mb-4">جوایز ارزشمند</h3>
+          <p class="text-gray-300 text-center">
+            به برندگان مسابقه جوایز نقدی و غیرنقدی ارزشمند و همچنین فرصت‌های شغلی در شرکت‌های معتبر اعطا می‌شود.
+          </p>
+        </div>
+        
+        <div class="card-hover p-8 rounded-xl transition-all duration-300">
+          <div class="w-16 h-16 bg-[#112240] rounded-full flex items-center justify-center mb-6 mx-auto">
+            <i class="fas fa-users feature-icon"></i>
+          </div>
+          <h3 class="text-xl font-bold text-center mb-4">جامعه حرفه‌ای</h3>
+          <p class="text-gray-300 text-center">
+            به جامعه‌ای از افراد علاقه‌مند به استراتژی و نظریه بازی‌ها بپیوندید و شبکه ارتباطی خود را گسترش دهید.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section id="features" class="py-20 bg-[#112240]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          ویژگی‌های <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">مسابقه</span>
+        </h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-6"></div>
+        <p class="max-w-3xl mx-auto text-gray-300 text-lg">
+          لیگک با ویژگی‌های منحصر به فرد خود، تجربه‌ای متفاوت از یادگیری نظریه بازی‌ها و استراتژی‌های برد ارائه می‌دهد.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8">
+          <div class="flex items-start">
+            <div class="flex-shrink-0 bg-[#0a192f] rounded-lg p-3 mr-4">
+              <i class="fas fa-chess text-[#3b82f6] text-xl"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2">چالش‌های متنوع</h3>
+              <p class="text-gray-300">
+                مسائل و چالش‌های طراحی شده در مسابقه، طیف گسترده‌ای از سناریوهای واقعی و تئوریک را پوشش می‌دهند.
+              </p>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="flex-shrink-0 bg-[#0a192f] rounded-lg p-3 mr-4">
+              <i class="fas fa-chart-line text-[#10b981] text-xl"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2">سیستم رتبه‌بندی پویا</h3>
+              <p class="text-gray-300">
+                سیستم رتبه‌بندی هوشمند که عملکرد شما را در طول مسابقه ارزیابی و رتبه‌بندی می‌کند.
+              </p>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="flex-shrink-0 bg-[#0a192f] rounded-lg p-3 mr-4">
+              <i class="fas fa-graduation-cap text-[#3b82f6] text-xl"></i>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2">محتوای آموزشی اختصاصی</h3>
+              <p class="text-gray-300">
+                دسترسی به محتوای آموزشی تخصصی در حوزه نظریه بازی‌ها و استراتژی‌های تصمیم‌گیری.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <div class="relative bg-[#0a192f]/50 backdrop-blur-md rounded-2xl overflow-hidden border border-[#1e2b47] p-6 glow-box">
+            <div class="flex items-center mb-6">
+              <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
+            </div>
+            <div class="bg-[#112240] rounded-lg p-4 mb-6">
+              <div class="flex items-center mb-4">
+                <div class="w-8 h-8 rounded-full bg-[#3b82f6]/20 flex items-center justify-center mr-3">
+                  <i class="fas fa-user text-[#3b82f6]"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">سیستم رتبه‌بندی</h4>
+                  <p class="text-xs text-gray-400">آخرین به‌روزرسانی: امروز</p>
+                </div>
+              </div>
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center">
+                    <span class="w-6 h-6 bg-[#10b981] rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">1</span>
+                    <span>تیم استراتژیست‌ها</span>
+                  </div>
+                  <span class="text-[#10b981] font-bold">2450 امتیاز</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center">
+                    <span class="w-6 h-6 bg-[#3b82f6] rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">2</span>
+                    <span>تیم تحلیل‌گران</span>
+                  </div>
+                  <span class="text-[#3b82f6] font-bold">2310 امتیاز</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center">
+                    <span class="w-6 h-6 bg-[#f59e0b] rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">3</span>
+                    <span>تیم تصمیم‌سازان</span>
+                  </div>
+                  <span class="text-[#f59e0b] font-bold">2150 امتیاز</span>
+                </div>
+                <div class="flex items-center justify-between opacity-70">
+                  <div class="flex items-center">
+                    <span class="w-6 h-6 bg-gray-500 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">?</span>
+                    <span>شما</span>
+                  </div>
+                  <span class="text-gray-400">ثبت‌نام کنید!</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button class="btn-primary px-6 py-2 rounded-full text-sm font-bold">مشاهده جدول کامل</button>
+            </div>
+          </div>
+          
+          <div class="absolute -top-6 -right-6 w-24 h-24 bg-[#10b981] rounded-full filter blur-3xl opacity-10 z-0"></div>
+          <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-[#3b82f6] rounded-full filter blur-3xl opacity-10 z-0"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Timeline Section -->
+  <section id="timeline" class="py-20 bg-[#0a192f]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          زمان‌بندی <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">مسابقه</span>
+        </h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-6"></div>
+        <p class="max-w-3xl mx-auto text-gray-300 text-lg">
+          برنامه زمانی مسابقه لیگک و مراحل مختلف آن را در این بخش مشاهده می‌کنید.
+        </p>
+      </div>
+      
+      <div class="relative max-w-3xl mx-auto">
+        <div class="absolute right-1/2 md:right-0 h-full w-0.5 bg-gradient-to-b from-[#10b981] to-[#3b82f6] transform translate-x-1/2 md:translate-x-4"></div>
+        
+        <div class="space-y-8">
+          <div class="relative timeline-item pr-10 md:pr-4 md:pl-10 md:translate-x-4">
+            <div class="card-hover p-6 rounded-xl">
+              <div class="flex items-center mb-2">
+                <span class="bg-[#10b981] text-white text-sm font-bold px-3 py-1 rounded-full">مرحله اول</span>
+                <span class="text-[#10b981] text-sm font-bold mr-2">15 مرداد - 30 مرداد 1402</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">ثبت‌نام و آزمون اولیه</h3>
+              <p class="text-gray-300">
+                ثبت‌نام در مسابقه و شرکت در آزمون آنلاین سنجش سطح دانش پایه نظریه بازی‌ها
+              </p>
+            </div>
+          </div>
+          
+          <div class="relative timeline-item pr-10 md:pr-4 md:pl-10 md:translate-x-4">
+            <div class="card-hover p-6 rounded-xl">
+              <div class="flex items-center mb-2">
+                <span class="bg-[#3b82f6] text-white text-sm font-bold px-3 py-1 rounded-full">مرحله دوم</span>
+                <span class="text-[#3b82f6] text-sm font-bold mr-2">5 شهریور - 20 شهریور 1402</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">دوره آموزشی مقدماتی</h3>
+              <p class="text-gray-300">
+                شرکت در دوره آموزشی آنلاین و آشنایی با مفاهیم پیشرفته‌تر نظریه بازی‌ها
+              </p>
+            </div>
+          </div>
+          
+          <div class="relative timeline-item pr-10 md:pr-4 md:pl-10 md:translate-x-4">
+            <div class="card-hover p-6 rounded-xl">
+              <div class="flex items-center mb-2">
+                <span class="bg-[#f59e0b] text-white text-sm font-bold px-3 py-1 rounded-full">مرحله سوم</span>
+                <span class="text-[#f59e0b] text-sm font-bold mr-2">25 شهریور - 10 مهر 1402</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">چالش‌های تیمی</h3>
+              <p class="text-gray-300">
+                حل چالش‌های استراتژیک به صورت تیمی و رقابت با سایر تیم‌ها
+              </p>
+            </div>
+          </div>
+          
+          <div class="relative timeline-item pr-10 md:pr-4 md:pl-10 md:translate-x-4">
+            <div class="card-hover p-6 rounded-xl">
+              <div class="flex items-center mb-2">
+                <span class="bg-[#ec4899] text-white text-sm font-bold px-3 py-1 rounded-full">مرحله نهایی</span>
+                <span class="text-[#ec4899] text-sm font-bold mr-2">15 مهر - 25 مهر 1402</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">مسابقه نهایی و اعلام نتایج</h3>
+              <p class="text-gray-300">
+                رقابت نهایی میان تیم‌های برتر و اعلام نتایج و اعطای جوایز
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section id="faq" class="py-20 bg-[#112240]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          سوالات <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">متداول</span>
+        </h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-6"></div>
+        <p class="max-w-3xl mx-auto text-gray-300 text-lg">
+          پاسخ به پرتکرارترین سوالات شما درباره مسابقه لیگک
+        </p>
+      </div>
+      
+      <div class="max-w-3xl mx-auto space-y-4">
+        <!-- FAQ Item 1 -->
+        <div class="card-hover rounded-xl overflow-hidden transition-all duration-300">
+          <button class="faq-question w-full text-right p-6 flex items-center justify-between">
+            <span class="text-lg font-bold">شرایط شرکت در مسابقه چیست؟</span>
+            <i class="fas fa-chevron-down text-[#3b82f6] transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer px-6 pb-6">
+            <p class="text-gray-300">
+              شرکت در مسابقه لیگک برای تمامی افراد بالای 18 سال که دانش پایه‌ای در زمینه ریاضیات و تحلیل دارند آزاد است. نیاز به مدرک خاصی نیست اما شرکت در آزمون اولیه الزامی است.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ Item 2 -->
+        <div class="card-hover rounded-xl overflow-hidden transition-all duration-300">
+          <button class="faq-question w-full text-right p-6 flex items-center justify-between">
+            <span class="text-lg font-bold">آیا می‌توان به صورت تیمی ثبت‌نام کرد؟</span>
+            <i class="fas fa-chevron-down text-[#3b82f6] transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer px-6 pb-6">
+            <p class="text-gray-300">
+              بله، مسابقه در دو بخش فردی و تیمی برگزار می‌شود. تیم‌ها می‌توانند از 2 تا 4 نفر تشکیل شوند. اعضای تیم باید در زمان ثبت‌نام مشخص شوند.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ Item 3 -->
+        <div class="card-hover rounded-xl overflow-hidden transition-all duration-300">
+          <button class="faq-question w-full text-right p-6 flex items-center justify-between">
+            <span class="text-lg font-bold">هزینه ثبت‌نام چقدر است؟</span>
+            <i class="fas fa-chevron-down text-[#3b82f6] transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer px-6 pb-6">
+            <p class="text-gray-300">
+              ثبت‌نام در مسابقه لیگک کاملاً رایگان است و هیچ هزینه‌ای برای شرکت‌کنندگان ندارد. تمامی مراحل مسابقه و محتوای آموزشی به صورت رایگان ارائه می‌شود.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ Item 4 -->
+        <div class="card-hover rounded-xl overflow-hidden transition-all duration-300">
+          <button class="faq-question w-full text-right p-6 flex items-center justify-between">
+            <span class="text-lg font-bold">آیا به شرکت‌کنندگان گواهی نامه اعطا می‌شود؟</span>
+            <i class="fas fa-chevron-down text-[#3b82f6] transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer px-6 pb-6">
+            <p class="text-gray-300">
+              بله، به تمامی شرکت‌کنندگانی که حداقل 80% مراحل مسابقه را تکمیل کنند، گواهی نامه معتبر شرکت در مسابقه لیگک اعطا خواهد شد. گواهی‌نامه‌های برندگان نیز دارای امتیازات ویژه‌ای خواهد بود.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ Item 5 -->
+        <div class="card-hover rounded-xl overflow-hidden transition-all duration-300">
+          <button class="faq-question w-full text-right p-6 flex items-center justify-between">
+            <span class="text-lg font-bold">منابع آموزشی مسابقه از کجا قابل دسترسی است؟</span>
+            <i class="fas fa-chevron-down text-[#3b82f6] transition-transform duration-300"></i>
+          </button>
+          <div class="faq-answer px-6 pb-6">
+            <p class="text-gray-300">
+              پس از ثبت‌نام و تأیید آزمون اولیه، به پنل کاربری شما در سایت مسابقه دسترسی داده می‌شود که شامل تمامی منابع آموزشی، ویدئوها، مقالات و تمرین‌های مورد نیاز است.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Register Section -->
+  <section id="register" class="py-20 bg-gradient-to-b from-[#0a192f] to-[#112240]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          ثبت‌نام در <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">مسابقه</span>
+        </h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-6"></div>
+        <p class="max-w-3xl mx-auto text-gray-300 text-lg">
+          فرم زیر را پر کنید تا در مسابقه لیگک ثبت‌نام کنید. پس از ثبت‌نام، اطلاعات بیشتر به ایمیل شما ارسال خواهد شد.
+        </p>
+      </div>
+      
+      <div class="max-w-2xl mx-auto">
+        <div class="card-hover rounded-xl p-8 glow-box">
+          <form id="registration-form" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="first-name" class="block text-sm font-medium text-gray-300 mb-2">نام</label>
+                <input type="text" id="first-name" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none" required />
+              </div>
+              <div>
+                <label for="last-name" class="block text-sm font-medium text-gray-300 mb-2">نام خانوادگی</label>
+                <input type="text" id="last-name" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none" required />
+              </div>
+            </div>
+            
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-300 mb-2">ایمیل</label>
+              <input type="email" id="email" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none" required />
+            </div>
+            
+            <div>
+              <label for="phone" class="block text-sm font-medium text-gray-300 mb-2">شماره تماس</label>
+              <input type="tel" id="phone" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none" required />
+            </div>
+            
+            <div>
+              <label for="education" class="block text-sm font-medium text-gray-300 mb-2">میزان تحصیلات</label>
+              <select id="education" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none" required>
+                <option value="" selected disabled>انتخاب کنید</option>
+                <option value="diploma">دیپلم</option>
+                <option value="bachelor">کارشناسی</option>
+                <option value="master">کارشناسی ارشد</option>
+                <option value="phd">دکترا</option>
+                <option value="other">سایر</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-300 mb-2">نحوه شرکت</label>
+              <div class="space-y-3">
+                <div class="flex items-center">
+                  <input id="individual" name="participation-type" type="radio" class="h-4 w-4 text-[#3b82f6] focus:ring-[#3b82f6]" checked />
+                  <label for="individual" class="mr-2 block text-sm text-gray-300">فردی</label>
+                </div>
+                <div class="flex items-center">
+                  <input id="team" name="participation-type" type="radio" class="h-4 w-4 text-[#3b82f6] focus:ring-[#3b82f6]" />
+                  <label for="team" class="mr-2 block text-sm text-gray-300">تیمی</label>
+                </div>
+              </div>
+            </div>
+            
+            <div id="team-fields" class="hidden space-y-4">
+              <div>
+                <label for="team-name" class="block text-sm font-medium text-gray-300 mb-2">نام تیم</label>
+                <input type="text" id="team-name" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none" />
+              </div>
+              <div>
+                <label for="team-members" class="block text-sm font-medium text-gray-300 mb-2">اعضای تیم (ایمیل یا شماره تماس)</label>
+                <textarea id="team-members" rows="3" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none"></textarea>
+                <p class="mt-1 text-xs text-gray-400">اطلاعات اعضا را با کاما (,) از هم جدا کنید</p>
+              </div>
+            </div>
+            
+            <div>
+              <label for="experience" class="block text-sm font-medium text-gray-300 mb-2">سابقه در نظریه بازی‌ها</label>
+              <textarea id="experience" rows="3" class="w-full input-field px-4 py-3 rounded-lg focus:outline-none" placeholder="در صورت داشتن سابقه در نظریه بازی‌ها یا مسابقات مشابه، توضیح دهید"></textarea>
+            </div>
+            
+            <div class="flex items-center">
+              <input id="terms" type="checkbox" class="h-4 w-4 text-[#3b82f6] focus:ring-[#3b82f6] rounded" required />
+              <label for="terms" class="mr-2 block text-sm text-gray-300">
+                با <a href="#" class="text-[#3b82f6] hover:underline">قوانین و شرایط</a> مسابقه موافقم
+              </label>
+            </div>
+            
+            <div>
+              <button type="submit" class="w-full btn-primary px-6 py-3 rounded-lg font-bold text-white mt-4">
+                ثبت‌نام در مسابقه
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Sponsors Section -->
+  <section class="py-16 bg-[#112240]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">
+          حامیان <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">مسابقه</span>
+        </h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-6"></div>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-center">
+        <div class="flex items-center justify-center p-4 bg-[#0a192f]/50 rounded-xl border border-[#1e2b47] h-24">
+          <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">شرکت الف</span>
+        </div>
+        <div class="flex items-center justify-center p-4 bg-[#0a192f]/50 rounded-xl border border-[#1e2b47] h-24">
+          <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">شرکت ب</span>
+        </div>
+        <div class="flex items-center justify-center p-4 bg-[#0a192f]/50 rounded-xl border border-[#1e2b47] h-24">
+          <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">شرکت ج</span>
+        </div>
+        <div class="flex items-center justify-center p-4 bg-[#0a192f]/50 rounded-xl border border-[#1e2b47] h-24">
+          <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">شرکت د</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="bg-[#0a192f] border-t border-[#1e2b47]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="md:col-span-2">
+          <a href="#" class="flex items-center space-x-2 mb-6">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center">
+              <i class="fas fa-chess-queen text-white text-xl"></i>
+            </div>
+            <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">لیگک</span>
+          </a>
+          <p class="text-gray-300 mb-6">
+            مسابقه آموزشی نظریه بازی و استراتژی برد لیگک، فرصتی استثنایی برای تقویت مهارت‌های تحلیلی و تصمیم‌گیری استراتژیک در محیطی رقابتی و جذاب.
+          </p>
+          <div class="flex space-x-4 space-x-reverse">
+            <a href="#" class="social-icon w-10 h-10 bg-[#112240] rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-[#3b82f6]">
+              <i class="fab fa-telegram"></i>
+            </a>
+            <a href="#" class="social-icon w-10 h-10 bg-[#112240] rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-[#1da1f2]">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon w-10 h-10 bg-[#112240] rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-[#4267b2]">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon w-10 h-10 bg-[#112240] rounded-full flex items-center justify-center text-gray-300 hover:text-white hover:bg-[#0077b5]">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold text-white mb-6">لینک‌های سریع</h3>
+          <ul class="space-y-3">
+            <li><a href="#about" class="text-gray-300 hover:text-white animated-border inline-block">درباره مسابقه</a></li>
+            <li><a href="#features" class="text-gray-300 hover:text-white animated-border inline-block">ویژگی‌ها</a></li>
+            <li><a href="#timeline" class="text-gray-300 hover:text-white animated-border inline-block">زمان‌بندی</a></li>
+            <li><a href="#faq" class="text-gray-300 hover:text-white animated-border inline-block">سوالات متداول</a></li>
+            <li><a href="#register" class="text-gray-300 hover:text-white animated-border inline-block">ثبت نام</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-bold text-white mb-6">تماس با ما</h3>
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mt-1 mr-2 text-[#3b82f6]"></i>
+              <span>تهران، خیابان آزادی، دانشگاه صنعتی شریف</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone mr-2 text-[#3b82f6]"></i>
+              <span>021-44200000</span>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-envelope mr-2 text-[#3b82f6]"></i>
+              <span>info@leaguek.ir</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-[#1e2b47] mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm mb-4 md:mb-0">
+          © ۱۴۰۲ کلیه حقوق برای مسابقه لیگک محفوظ است.
+        </p>
+        <div class="flex space-x-6 space-x-reverse">
+          <a href="#" class="text-gray-400 hover:text-white text-sm">قوانین و مقررات</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm">حریم خصوصی</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Success Modal -->
+  <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black/50 backdrop-blur-sm">
+    <div class="bg-[#112240] rounded-2xl max-w-md w-full mx-4 p-8 relative border border-[#10b981]/30 glow-box">
+      <button id="close-modal" class="absolute left-4 top-4 text-gray-400 hover:text-white">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="text-center">
+        <div class="w-20 h-20 bg-[#10b981]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+          <i class="fas fa-check-circle text-4xl text-[#10b981]"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-white mb-4">ثبت‌نام شما با موفقیت انجام شد!</h3>
+        <p class="text-gray-300 mb-6">
+          اطلاعات ثبت‌نام و دستورالعمل‌های بعدی به ایمیل شما ارسال شد. لطفاً صندوق ورودی و اسپم خود را بررسی کنید.
+        </p>
+        <button id="modal-ok" class="btn-primary px-6 py-2 rounded-full font-bold text-white">
+          متوجه شدم
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- لینک به فایل JS خارجی -->
+  <script src="script.js"></script>
 </body>
 </html>
