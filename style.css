@@ -195,3 +195,21 @@ body {
     max-height: 500px; /* مقدار max-height را بر اساس طول محتوا تنظیم کنید */
     opacity: 1;
 }
+
+
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
