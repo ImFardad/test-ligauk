@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل کاربری | مسابقه آموزشی</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn.css" rel="stylesheet">
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.1;
+            position: absolute;
+            z-index: 0;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .active-section {
+            display: block;
+        }
+        
+        .menu-item:hover .menu-icon {
+            transform: translateX(-5px);
+        }
+        
+        .menu-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-vazir min-h-screen flex">
+    <!-- عناصر متحرک پس زمینه -->
+    <div class="floating-element" style="top: 10%; left: 20%;">
+        <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="#3b82f6"></circle>
+        </svg>
+    </div>
+    <div class="floating-element" style="top: 70%; left: 80%; animation-delay: 2s;">
+        <svg width="150" height="150" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" fill="#10b981"></rect>
+        </svg>
+    </div>
+    <div class="floating-element" style="top: 30%; left: 70%; animation-delay: 4s;">
+        <svg width="80" height="80" viewBox="0 0 100 100">
+            <polygon points="50,5 90,90 10,90" fill="#8b5cf6"></polygon>
+        </svg>
+    </div>
+    
+    <!-- منوی سمت چپ -->
+    <div class="w-64 bg-gray-800 h-screen sticky top-0 flex-shrink-0 shadow-lg">
+        <div class="p-4 border-b border-gray-700">
+            <h1 class="text-xl font-bold text-center text-green-400">مسابقه آموزشی</h1>
+            <p class="text-sm text-center text-blue-300 mt-1">پنل کاربری شرکت کنندگان</p>
+        </div>
+        
+        <div class="p-4 flex items-center space-x-3 border-b border-gray-700">
+            <div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-xl font-bold text-green-400">ع</div>
+            <div>
+                <p class="font-medium">علی محمدی</p>
+                <p class="text-xs text-gray-400">تیم آبی</p>
+            </div>
+        </div>
+        
+        <nav class="mt-4">
+            <ul>
+                <li class="menu-item">
+                    <a href="#" onclick="showSection('dashboard')" class="flex items-center p-3 hover:bg-gray-700 text-gray-300 hover:text-green-400">
+                        <span class="menu-icon ml-2">📊</span>
+                        <span>داشبورد</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" onclick="showSection('profile')" class="flex items-center p-3 hover:bg-gray-700 text-gray-300 hover:text-green-400">
+                        <span class="menu-icon ml-2">👤</span>
+                        <span>پروفایل کاربری</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" onclick="showSection('education')" class="flex items-center p-3 hover:bg-gray-700 text-gray-300 hover:text-green-400">
+                        <span class="menu-icon ml-2">📚</span>
+                        <span>محتوا آموزشی</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" onclick="showSection('teams')" class="flex items-center p-3 hover:bg-gray-700 text-gray-300 hover:text-green-400">
+                        <span class="menu-icon ml-2">👥</span>
+                        <span>گروه‌بندی</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" onclick="showSection('shop')" class="flex items-center p-3 hover:bg-gray-700 text-gray-300 hover:text-green-400">
+                        <span class="menu-icon ml-2">🛒</span>
+                        <span>فروشگاه</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" onclick="showSection('bank')" class="flex items-center p-3 hover:bg-gray-700 text-gray-300 hover:text-green-400">
+                        <span class="menu-icon ml-2">💰</span>
+                        <span>بانک امتیازات</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" onclick="showSection('leaderboard')" class="flex items-center p-3 hover:bg-gray-700 text-gray-300 hover:text-green-400">
+                        <span class="menu-icon ml-2">🏆</span>
+                        <span>جدول امتیازات</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" onclick="showSection('messages')" class="flex items-center p-3 hover:bg-gray-700 text-gray-300 hover:text-green-400">
+                        <span class="menu-icon ml-2">✉️</span>
+                        <span>پیام‌ها</span>
+                        <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full mr-auto">3</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" onclick="showSection('settings')" class="flex items-center p-3 hover:bg-gray-700 text-gray-300 hover:text-green-400">
+                        <span class="menu-icon ml-2">⚙️</span>
+                        <span>تنظیمات</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="absolute bottom-0 w-full p-4 border-t border-gray-700">
+            <a href="#" class="flex items-center p-2 text-red-400 hover:bg-gray-700 rounded">
+                <span class="ml-2">🚪</span>
+                <span>خروج از حساب</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- محتوای اصلی -->
+    <div class="flex-1 p-6">
+        <!-- بخش داشبورد -->
+        <div id="dashboard" class="content-section active-section">
+            <h2 class="text-2xl font-bold mb-6 text-green-400 border-b border-gray-700 pb-2">داشبورد کاربری</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-gray-800 rounded-lg p-5 shadow-lg card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-400">امتیاز کلی</p>
+                            <p class="text-3xl font-bold text-blue-400">1,250</p>
+                        </div>
+                        <div class="text-4xl text-blue-400">🏅</div>
+                    </div>
+                    <div class="mt-3">
+                        <div class="progress-bar rounded-full" style="width: 65%;"></div>
+                        <p class="text-xs mt-1 text-gray-400">65% تا سطح بعدی</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-5 shadow-lg card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-400">وضعیت تیم</p>
+                            <p class="text-3xl font-bold text-green-400">آبی</p>
+                        </div>
+                        <div class="text-4xl text-green-400">👥</div>
+                    </div>
+                    <div class="mt-3">
+                        <p class="text-sm">رتبه 3 از 8 تیم</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-5 shadow-lg card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-400">تعداد چالش‌ها</p>
+                            <p class="text-3xl font-bold text-purple-400">18/30</p>
+                        </div>
+                        <div class="text-4xl text-purple-400">✅</div>
+                    </div>
+                    <div class="mt-3">
+                        <div class="progress-bar rounded-full" style="width: 60%; background: linear-gradient(90deg, #8b5cf6, #ec4899);"></div>
+                        <p class="text-xs mt-1 text-gray-400">60% چالش‌ها تکمیل شده</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-gray-800 rounded-lg p-5 shadow-lg">
+                    <h3 class="text-lg font-semibold mb-4 text-blue-300">فعالیت‌های اخیر</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start border-b border-gray-700 pb-3">
+                            <div class="bg-gray-700 p-2 rounded-full mr-3">📚</div>
+                            <div>
+                                <p class="font-medium">محتوا آموزشی جدید</p>
+                                <p class="text-sm text-gray-400">فصل 3: الگوریتم‌های پیشرفته اضافه شد</p>
+                                <p class="text-xs text-gray-500 mt-1">2 ساعت پیش</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start border-b border-gray-700 pb-3">
+                            <div class="bg-gray-700 p-2 rounded-full mr-3">🏆</div>
+                            <div>
+                                <p class="font-medium">امتیاز کسب کردید</p>
+                                <p class="text-sm text-gray-400">50 امتیاز برای تکمیل چالش برنامه‌نویسی</p>
+                                <p class="text-xs text-gray-500 mt-1">دیروز</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start border-b border-gray-700 pb-3">
+                            <div class="bg-gray-700 p-2 rounded-full mr-3">👥</div>
+                            <div>
+                                <p class="font-medium">پیام جدید از تیم</p>
+                                <p class="text-sm text-gray-400">محمد: جلسه فردا ساعت 18 برگزار می‌شود</p>
+                                <p class="text-xs text-gray-500 mt-1">دیروز</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-5 shadow-lg">
+                    <h3 class="text-lg font-semibold mb-4 text-green-300">چالش‌های پیش رو</h3>
+                    <div class="space-y-3">
+                        <div class="bg-gray-700 p-3 rounded-lg flex justify-between items-center">
+                            <div>
+                                <p class="font-medium">چالش الگوریتمی</p>
+                                <p class="text-sm text-gray-400">مهلت: فردا ساعت 23:59</p>
+                            </div>
+                            <button class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm">شرکت</button>
+                        </div>
+                        <div class="bg-gray-700 p-3 rounded-lg flex justify-between items-center">
+                            <div>
+                                <p class="font-medium">مسابقه کد نویسی</p>
+                                <p class="text-sm text-gray-400">مهلت: 3 روز دیگر</p>
+                            </div>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm">آماده‌سازی</button>
+                        </div>
+                        <div class="bg-gray-700 p-3 rounded-lg flex justify-between items-center">
+                            <div>
+                                <p class="font-medium">پروژه تیمی</p>
+                                <p class="text-sm text-gray-400">مهلت: 1 هفته دیگر</p>
+                            </div>
+                            <button class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded text-sm">جزئیات</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- بخش پروفایل -->
+        <div id="profile" class="content-section">
+            <h2 class="text-2xl font-bold mb-6 text-green-400 border-b border-gray-700 pb-2">پروفایل کاربری</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-1 bg-gray-800 rounded-lg p-5 shadow-lg">
+                    <div class="flex flex-col items-center">
+                        <div class="w-32 h-32 rounded-full bg-gray-700 flex items-center justify-center text-4xl font-bold text-green-400 mb-4">ع</div>
+                        <h3 class="text-xl font-bold">علی محمدی</h3>
+                        <p class="text-gray-400 mb-4">تیم آبی</p>
+                        
+                        <div class="w-full bg-gray-700 h-px my-4"></div>
+                        
+                        <div class="w-full space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">تاریخ عضویت:</span>
+                                <span>1402/05/15</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">سطح کاربری:</span>
+                                <span class="text-blue-400">پیشرفته</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">امتیاز کلی:</span>
+                                <span class="text-green-400">1,250</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-2 bg-gray-800 rounded-lg p-5 shadow-lg">
+                    <h3 class="text-lg font-semibold mb-4 text-blue-300">اطلاعات شخصی</h3>
+                    
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-400 mb-1">نام</label>
+                                <input type="text" value="علی" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2">
+                            </div>
+                            <div>
+                                <label class="block text-gray-400 mb-1">نام خانوادگی</label>
+                                <input type="text" value="محمدی" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-400 mb-1">ایمیل</label>
+                            <input type="email" value="ali@example.com" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-400 mb-1">شماره موبایل</label>
+                            <input type="tel" value="09123456789" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-400 mb-1">درباره من</label>
+                            <textarea class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 h-24">برنامه‌نویس و علاقه‌مند به یادگیری مفاهیم جدید در حوزه هوش مصنوعی</textarea>
+                        </div>
+                        
+                        <button type="button" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">ذخیره تغییرات</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- بخش محتوای آموزشی -->
+        <div id="education" class="content-section">
+            <h2 class="text-2xl font-bold mb-6 text-green-400 border-b border-gray-700 pb-2">محتوا آموزشی</h2>
+            
+            <div class="mb-6 flex justify-between items-center">
+                <div class="flex space-x-2">
+                    <button class="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded">همه</button>
+                    <button class="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded">برنامه‌نویسی</button>
+                    <button class="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded">هوش مصنوعی</button>
+                    <button class="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded">الگوریتم</button>
+                </div>
+                
+                <div class="relative">
+                    <input type="text" placeholder="جستجو در محتوا..." class="bg-gray-700 border border-gray-600 rounded px-3 py-1 pr-8">
+                    <span class="absolute right-2 top-1/2 transform -translate-y-1/2">🔍</span>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-gray-800 rounded-lg p-5 shadow-lg card-hover">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-lg font-semibold">الگوریتم‌های جستجو</h3>
+                        <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded">جدید</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">آشنایی با الگوریتم‌های جستجوی خطی، دودویی و ...</p>
+                    <div class="flex justify-between items-center">
+                        <div class="flex space-x-1">
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">برنامه‌نویسی</span>
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">الگوریتم</span>
+                        </div>
+                        <button class="text-blue-400 hover:text-blue-300 text-sm">مشاهده</button>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-5 shadow-lg card-hover">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-lg font-semibold">یادگیری ماشین مقدماتی</h3>
+                        <span class="bg-green-600 text-white text-xs px-2 py-1 rounded">تکمیل شده</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">مفاهیم پایه یادگیری ماشین و کاربردهای آن</p>
+                    <div class="flex justify-between items-center">
+                        <div class="flex space-x-1">
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">هوش مصنوعی</span>
+                        </div>
+                        <button class="text-blue-400 hover:text-blue-300 text-sm">مشاهده</button>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-5 shadow-lg card-hover">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="text-lg font-semibold">پایتون پیشرفته</h3>
+                        <span class="bg-purple-600 text-white text-xs px-2 py-1 rounded">در حال یادگیری</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">مفاهیم پیشرفته پایتون برای برنامه‌نویسی حرفه‌ای</p>
+                    <div class="flex justify-between items-center">
+                        <div class="flex space-x-1">
+                            <span class="bg-gray-700 text-xs px-2 py-1 rounded">برنامه‌نویسی</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-xs text-gray-400 mr-2">65%</span>
+                            <div class="w-16 h-1 bg-gray-700 rounded-full">
+                                <div class="h-1 bg-green-500 rounded-full" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- بخش گروه‌بندی -->
+        <div id="teams" class="content-section">
+            <h2 class="text-2xl font-bold mb-6 text-green-400 border-b border-gray-700 pb-2">گروه‌بندی</h2>
+            
+            <div class="bg-gray-800 rounded-lg p-5 shadow-lg mb-6">
+                <h3 class="text-lg font-semibold mb-4 text-blue-300">تیم شما</h3>
+                
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-blue-900 flex items-center justify-center text-2xl">🔵</div>
+                    <div>
+                        <h4 class="text-xl font-bold">تیم آبی</h4>
+                        <p class="text-gray-400">رتبه: 3 از 8 تیم</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div class="bg-gray-700 p-3 rounded-lg">
+                        <p class="text-gray-400">امتیاز تیم</p>
+                        <p class="text-2xl font-bold text-green-400">3,450</p>
+                    </div>
+                    <div class="bg-gray-700 p-3 rounded-lg">
+                        <p class="text-gray-400">چالش‌های تکمیل شده</p>
+                        <p class="text-2xl font-bold text-blue-400">24/40</p>
+                    </div>
+                    <div class="bg-gray-700 p-3 rounded-lg">
+                        <p class="text-gray-400">اعضا</p>
+                        <p class="text-2xl font-bold text-purple-400">5 نفر</p>
+                    </div>
+                </div>
+                
+                <h4 class="text-lg font-semibold mb-3 text-green-300">اعضای تیم</h4>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center">ع</div>
+                            <div>
+                                <p class="font-medium">علی محمدی</p>
+                                <p class="text-xs text-gray-400">سرپرست تیم</p>
+                            </div>
+                        </div>
+                        <span class="text-green-400">1,250 امتیاز</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center">م</div>
+                            <div>
+                                <p class="font-medium">محمد حسینی</p>
+                                <p class="text-xs text-gray-400">عضو</p>
+                            </div>
+                        </div>
+                        <span class="text-blue-400">980 امتیاز</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center">ز</div>
+                            <div>
+                                <p class="font-medium">زهرا احمدی</p>
+                                <p class="text-xs text-gray-400">عضو</p>
+                            </div>
+                        </div>
+                        <span class="text-blue-400">750 امتیاز</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- بخش فروشگاه -->
+        <div id="shop" class="content-section">
+            <h2 class="text-2xl font-bold mb-6 text-green-400 border-b border-gray-700 pb-2">فروشگاه امتیازات</h2>
+            
+            <div class="mb-6 bg-gray-800 rounded-lg p-4 flex justify-between items-center">
+                <div class="flex items-center">
+                    <span class="text-xl mr-2">💰</span>
+                    <div>
+                        <p class="text-gray-400">امتیاز قابل مصرف شما</p>
+                        <p class="text-2xl font-bold text-green-400">1,250 امتیاز</p>
+                    </div>
+                </div>
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">تاریخچه خریدها</button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-800 rounded-lg p-5 shadow-lg card-hover">
+                    <div class="bg-gray-700 h-40 rounded-lg mb-4 flex items-center justify-center text-4xl">🎁</div>
+                    <h3 class="text-lg font-semibold mb-2">کارت هدیه 50 هزار تومانی</h3>
+                    <p class="text-gray-400 text-sm mb-4">کارت هدیه دیجی‌کالا با ارزش 50 هزار تومان</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-green-400 font-bold">500 امتیاز</span>
+                        <button class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm">خرید</button>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-5 shadow-lg card-hover">
+                    <div class="bg-gray-700 h-40 rounded-lg mb-4 flex items-center justify-center text-4xl">📚</div>
+                    <h3 class="text-lg font-semibold mb-2">کتاب الگوریتم‌های پیشرفته</h3>
+                    <p class="text-gray-400 text-sm mb-4">کتاب جامع الگوریتم‌های پیشرفته به زبان فارسی</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-green-400 font-bold">800 امتیاز</span>
+                        <button class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm">خرید</button>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-5 shadow-lg card-hover">
+                    <div class="bg-gray-700 h-40 rounded-lg mb-4 flex items-center justify-center text-4xl">🎓</div>
+                    <h3 class="text-lg font-semibold mb-2">دوره آموزشی رایگان</h3>
+                    <p class="text-gray-400 text-sm mb-4">دوره آموزشی انتخابی از لیست دوره‌های سایت</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-green-400 font-bold">1,200 امتیاز</span>
+                        <button class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm">خرید</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- بخش بانک امتیازات -->
+        <div id="bank" class="content-section">
+            <h2 class="text-2xl font-bold mb-6 text-green-400 border-b border-gray-700 pb-2">بانک امتیازات</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <div class="bg-gray-800 rounded-lg p-5 shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-blue-300">امتیاز کلی</h3>
+                        <span class="text-2xl font-bold text-green-400">1,250</span>
+                    </div>
+                    <div class="bg-gray-700 rounded-full h-2 mb-2">
+                        <div class="bg-green-500 h-2 rounded-full" style="width: 65%;"></div>
+                    </div>
+                    <p class="text-xs text-gray-400">65% تا سطح بعدی</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-5 shadow-lg">
+                    <h3 class="text-lg font-semibold mb-4 text-green-300">امتیاز قابل مصرف</h3>
+                    <div class="flex items-end">
+                        <span class="text-3xl font-bold text-green-400">850</span>
+                        <span class="text-gray-400 mr-1">امتیاز</span>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-5 shadow-lg">
+                    <h3 class="text-lg font-semibold mb-4 text-purple-300">امتیاز قفل شده</h3>
+                    <div class="flex items-end">
+                        <span class="text-3xl font-bold text-purple-400">400</span>
+                        <span class="text-gray-400 mr-1">امتیاز</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-2">پس از تکمیل چالش‌های تیمی آزاد می‌شود</p>
+                </div>
+            </div>
+            
+            <div class="bg-gray-800 rounded-lg p-5 shadow-lg">
+                <h3 class="text-lg font-semibold mb-4 text-blue-300">تاریخچه امتیازات</h3>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-gray-700">
+                                <th class="text-right py-2 px-4">تاریخ</th>
+                                <th class="text-right py-2 px-4">عنوان</th>
+                                <th class="text-right py-2 px-4">مقدار</th>
+                                <th class="text-right py-2 px-4">نوع</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-3 px-4">1402/08/15</td>
+                                <td class="py-3 px-4">تکمیل چالش برنامه‌نویسی</td>
+                                <td class="py-3 px-4 text-green-400">+50</td>
+                                <td class="py-3 px-4">کسب امتیاز</td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-3 px-4">1402/08/10</td>
+                                <td class="py-3 px-4">خرید از فروشگاه</td>
+                                <td class="py-3 px-4 text-red-400">-200</td>
+                                <td class="py-3 px-4">مصرف امتیاز</td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-3 px-4">1402/08/05</td>
+                                <td class="py-3 px-4">پاسخ صحیح به سوالات آزمون</td>
+                                <td class="py-3 px-4 text-green-400">+120</td>
+                                <td class="py-3 px-4">کسب امتیاز</td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-3 px-4">1402/07/28</td>
+                                <td class="py-3 px-4">شرکت در مسابقه تیمی</td>
+                                <td class="py-3 px-4 text-green-400">+300</td>
+                                <td class="py-3 px-4">کسب امتیاز</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- بخش جدول امتیازات -->
+        <div id="leaderboard" class="content-section">
+            <h2 class="text-2xl font-bold mb-6 text-green-400 border-b border-gray-700 pb-2">جدول امتیازات</h2>
+            
+            <div class="mb-6 flex space-x-3">
+                <button class="bg-green-600 text-white px-4 py-2 rounded">رده‌بندی فردی</button>
+                <button class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded">رده‌بندی تیمی</button>
+            </div>
+            
+            <div class="bg-gray-800 rounded-lg p-5 shadow-lg">
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-gray-700">
+                                <th class="text-right py-2 px-4">رتبه</th>
+                                <th class="text-right py-2 px-4">نام کاربر</th>
+                                <th class="text-right py-2 px-4">تیم</th>
+                                <th class="text-right py-2 px-4">امتیاز</th>
+                                <th class="text-right py-2 px-4">چالش‌ها</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-700 bg-gray-750">
+                                <td class="py-3 px-4 text-yellow-400 font-bold">1</td>
+                                <td class="py-3 px-4 flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center mr-2">ر</div>
+                                    رضا احمدی
+                                </td>
+                                <td class="py-3 px-4 text-red-400">قرمز</td>
+                                <td class="py-3 px-4 font-bold">1,850</td>
+                                <td class="py-3 px-4">28/30</td>
+                            </tr>
+                            <tr class="border-b border-gray-700 bg-gray-750">
+                                <td class="py-3 px-4 text-gray-300 font-bold">2</td>
+                                <td class="py-3 px-4 flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center mr-2">ز</div>
+                                    زهرا محمدی
+                                </td>
+                                <td class="py-3 px-4 text-green-400">سبز</td>
+                                <td class="py-3 px-4 font-bold">1,720</td>
+                                <td class="py-3 px-4">26/30</td>
+                            </tr>
+                            <tr class="border-b border-gray-700 bg-gray-750">
+                                <td class="py-3 px-4 text-amber-600 font-bold">3</td>
+                                <td class="py-3 px-4 flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center mr-2">م</div>
+                                    محسن رضایی
+                                </td>
+                                <td class="py-3 px-4 text-yellow-400">زرد</td>
+                                <td class="py-3 px-4 font-bold">1,550</td>
+                                <td class="py-3 px-4">25/30</td>
+                            </tr>
+                            <tr class="border-b border-gray-700 bg-gray-750">
+                                <td class="py-3 px-4 font-bold">4</td>
+                                <td class="py-3 px-4 flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center mr-2">ع</div>
+                                    علی محمدی
+                                </td>
+                                <td class="py-3 px-4 text-blue-400">آبی</td>
+                                <td class="py-3 px-4 font-bold">1,250</td>
+                                <td class="py-3 px-4">18/30</td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-3 px-4 font-bold">5</td>
+                                <td class="py-3 px-4 flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center mr-2">ن</div>
+                                    نرگس حسینی
+                                </td>
+                                <td class="py-3 px-4 text-purple-400">بنفش</td>
+                                <td class="py-3 px-4 font-bold">1,100</td>
+                                <td class="py-3 px-4">20/30</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-6 flex justify-center">
+                    <nav class="flex space-x-1">
+                        <button class="px-3 py-1 bg-gray-700 rounded">1</button>
+                        <button class="px-3 py-1 bg-gray-700 rounded hover:bg-gray-600">2</button>
+                        <button class="px-3 py-1 bg-gray-700 rounded hover:bg-gray-600">3</button>
+                        <button class="px-3 py-1 bg-gray-700 rounded hover:bg-gray-600">...</button>
+                        <button class="px-3 py-1 bg-gray-700 rounded hover:bg-gray-600">بعدی</button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        
+        <!-- بخش پیام‌ها -->
+        <div id="messages" class="content-section">
+            <h2 class="text-2xl font-bold mb-6 text-green-400 border-b border-gray-700 pb-2">پیام‌ها</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <div class="lg:col-span-1 bg-gray-800 rounded-lg shadow-lg">
+                    <div class="p-4 border-b border-gray-700">
+                        <div class="relative">
+                            <input type="text" placeholder="جستجو در پیام‌ها..." class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 pr-8">
+                            <span class="absolute right-2 top-1/2 transform -translate-y-1/2">🔍</span>
+                        </div>
+                    </div>
+                    
+                    <div class="overflow-y-auto" style="max-height: 500px;">
+                        <div class="p-3 border-b border-gray-700 hover:bg-gray-700 cursor-pointer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center mr-2">ت</div>
+                                    <div>
+                                        <p class="font-medium">تیم آبی</p>
+                                        <p class="text-xs text-gray-400">جلسه فردا ساعت 18</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs text-gray-400">دیروز</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-3 border-b border-gray-700 hover:bg-gray-700 cursor-pointer bg-gray-750">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center mr-2">م</div>
+                                    <div>
+                                        <p class="font-medium">مدیریت مسابقه</p>
+                                        <p class="text-xs text-gray-400">اطلاعیه جدید</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs text-gray-400">2 روز پیش</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-3 border-b border-gray-700 hover:bg-gray-700 cursor-pointer">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-green-900 flex items-center justify-center mr-2">پ</div>
+                                    <div>
+                                        <p class="font-medium">پشتیبانی فنی</p>
+                                        <p class="text-xs text-gray-400">پاسخ به سوال شما</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs text-gray-400">3 روز پیش</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-3 bg-gray-800 rounded-lg shadow-lg">
+                    <div class="p-4 border-b border-gray-700 flex justify-between items-center">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center mr-2">م</div>
+                            <div>
+                                <p class="font-medium">مدیریت مسابقه</p>
+                                <p class="text-xs text-gray-400">2 روز پیش</p>
+                            </div>
+                        </div>
+                        <button class="text-red-400 hover:text-red-300">حذف مکالمه</button>
+                    </div>
+                    
+                    <div class="p-4 overflow-y-auto" style="max-height: 400px;">
+                        <div class="flex justify-start mb-4">
+                            <div class="max-w-xs lg:max-w-md bg-gray-700 p-3 rounded-lg">
+                                <p>سلام دوستان عزیز</p>
+                                <p class="mt-2">اطلاعیه جدیدی در مورد تغییر زمان مسابقه نهایی منتشر شده است. لطفا بخش اطلاعیه‌ها را بررسی کنید.</p>
+                                <p class="text-xs text-gray-400 mt-2">1402/08/12 - 14:30</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-end mb-4">
+                            <div class="max-w-xs lg:max-w-md bg-green-700 p-3 rounded-lg">
+                                <p>سلام</p>
+                                <p class="mt-2">ممنون از اطلاع رسانی. حتما بررسی می‌کنم.</p>
+                                <p class="text-xs text-gray-300 mt-2">1402/08/12 - 14:35</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-start mb-4">
+                            <div class="max-w-xs lg:max-w-md bg-gray-700 p-3 rounded-lg">
+                                <p>همچنین یادآوری می‌کنم که مهلت ارسال پروژه تیمی تا پایان هفته جاری می‌باشد.</p>
+                                <p class="text-xs text-gray-400 mt-2">1402/08/12 - 14:36</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 border-t border-gray-700">
+                        <div class="flex">
+                            <input type="text" placeholder="پیام خود را بنویسید..." class="flex-1 bg-gray-700 border border-gray-600 rounded-l px-3 py-2">
+                            <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-r">ارسال</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- بخش تنظیمات -->
+        <div id="settings" class="content-section">
+            <h2 class="text-2xl font-bold mb-6 text-green-400 border-b border-gray-700 pb-2">تنظیمات</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 bg-gray-800 rounded-lg p-5 shadow-lg">
+                    <h3 class="text-lg font-semibold mb-4 text-blue-300">تنظیمات حساب کاربری</h3>
+                    
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-gray-400 mb-1">تغییر رمز عبور</label>
+                            <input type="password" placeholder="رمز عبور فعلی" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 mb-2">
+                            <input type="password" placeholder="رمز عبور جدید" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 mb-2">
+                            <input type="password" placeholder="تکرار رمز عبور جدید" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-400 mb-1">تنظیمات اعلان‌ها</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="form-checkbox text-green-500" checked>
+                                    <span>اعلان‌های ایمیلی</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="form-checkbox text-green-500">
+                                    <span>اعلان‌های داخلی</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" class="form-checkbox text-green-500" checked>
+                                    <span>اعلان‌های پیامکی</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-400 mb-1">تم نمایش</label>
+                            <div class="flex space-x-3">
+                                <button type="button" class="bg-gray-700 px-4 py-2 rounded border-2 border-green-500">دارک</button>
+                                <button type="button" class="bg-gray-700 px-4 py-2 rounded hover:bg-gray-600">لایت</button>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">ذخیره تغییرات</button>
+                    </form>
+                </div>
+                
+                <div class="bg-gray-800 rounded-lg p-5 shadow-lg">
+                    <h3 class="text-lg font-semibold mb-4 text-red-300">حساب کاربری</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-gray-400">حذف حساب کاربری</p>
+                            <p class="text-sm text-gray-400 mb-3">با حذف حساب کاربری تمام اطلاعات شما به صورت دائمی پاک خواهد شد.</p>
+                            <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm">حذف حساب کاربری</button>
+                        </div>
+                        
+                        <div class="border-t border-gray-700 pt-4">
+                            <p class="text-gray-400">خروج از همه دستگاه‌ها</p>
+                            <p class="text-sm text-gray-400 mb-3">از همه دستگاه‌هایی که وارد حساب کاربری شده‌اید خارج شوید.</p>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">خروج از همه دستگاه‌ها</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showSection(sectionId) {
+            // مخفی کردن تمام بخش‌ها
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active-section');
+            });
+            
+            // نمایش بخش مورد نظر
+            document.getElementById(sectionId).classList.add('active-section');
+        }
+    </script>
+</body>
+</html>
