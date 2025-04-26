@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - صفحه پیدا نشد</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        @keyframes glitch {
+            0% {
+                text-shadow: 0.05em 0 0 #00ff9d, -0.05em -0.025em 0 #ff00c1, -0.025em 0.05em 0 #00a3ff;
+            }
+            14% {
+                text-shadow: 0.05em 0 0 #00ff9d, -0.05em -0.025em 0 #ff00c1, -0.025em 0.05em 0 #00a3ff;
+            }
+            15% {
+                text-shadow: -0.05em -0.025em 0 #00ff9d, 0.025em 0.025em 0 #ff00c1, -0.05em -0.05em 0 #00a3ff;
+            }
+            49% {
+                text-shadow: -0.05em -0.025em 0 #00ff9d, 0.025em 0.025em 0 #ff00c1, -0.05em -0.05em 0 #00a3ff;
+            }
+            50% {
+                text-shadow: 0.025em 0.05em 0 #00ff9d, 0.05em 0 0 #ff00c1, 0 -0.05em 0 #00a3ff;
+            }
+            99% {
+                text-shadow: 0.025em 0.05em 0 #00ff9d, 0.05em 0 0 #ff00c1, 0 -0.05em 0 #00a3ff;
+            }
+            100% {
+                text-shadow: -0.025em 0 0 #00ff9d, -0.025em -0.025em 0 #ff00c1, -0.025em -0.05em 0 #00a3ff;
+            }
+        }
+        
+        .glitch-text {
+            animation: glitch 650ms infinite;
+        }
+        
+        body {
+            font-family: 'Vazir', sans-serif;
+            background-color: #0a0a0a;
+            overflow: hidden;
+        }
+        
+        .bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            filter: blur(40px);
+        }
+        
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background: #00ff9d;
+            animation: move1 15s linear infinite;
+        }
+        
+        .circle-2 {
+            width: 400px;
+            height: 400px;
+            background: #00a3ff;
+            animation: move2 20s linear infinite;
+        }
+        
+        .circle-3 {
+            width: 250px;
+            height: 250px;
+            background: #ff00c1;
+            animation: move3 25s linear infinite;
+        }
+        
+        @keyframes move1 {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(100px, 100px); }
+            100% { transform: translate(0, 0); }
+        }
+        
+        @keyframes move2 {
+            0% { transform: translate(0, 100px); }
+            50% { transform: translate(-100px, 0); }
+            100% { transform: translate(0, 100px); }
+        }
+        
+        @keyframes move3 {
+            0% { transform: translate(100px, 0); }
+            50% { transform: translate(0, 100px); }
+            100% { transform: translate(100px, 0); }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .btn-hover {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 163, 255, 0.3);
+        }
+        
+        .btn-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.2), transparent);
+            transition: all 0.5s;
+        }
+        
+        .btn-hover:hover::before {
+            left: 100%;
+        }
+        
+        .link-hover {
+            position: relative;
+        }
+        
+        .link-hover::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            right: 0;
+            background-color: #00ff9d;
+            transition: width 0.3s ease;
+        }
+        
+        .link-hover:hover::after {
+            width: 100%;
+            left: 0;
+        }
+    </style>
+</head>
+<body class="text-white">
+    <div class="bg-animation">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 h-screen flex flex-col justify-center items-center">
+        <div class="text-center mb-12 floating">
+            <h1 class="glitch-text text-7xl md:text-9xl font-bold mb-4">ERROR 404</h1>
+            <h2 class="text-2xl md:text-3xl font-medium text-blue-400">صفحه مورد نظر یافت نشد!</h2>
+        </div>
+        
+        <div class="max-w-2xl text-center mb-12">
+            <p class="text-gray-300 mb-6 leading-loose">
+                متأسفیم، اما صفحه ای که به دنبال آن هستید وجود ندارد، حذف شده یا نام آن تغییر کرده است. لطفاً آدرس را بررسی کنید یا از دکمه های زیر استفاده نمایید.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/" class="btn-hover bg-gradient-to-r from-blue-500 to-green-500 text-white px-8 py-3 rounded-full font-bold">
+                    بازگشت به صفحه اصلی
+                </a>
+                <a href="#" class="btn-hover border border-blue-400 text-blue-400 px-8 py-3 rounded-full font-bold hover:bg-blue-900 hover:bg-opacity-20">
+                    تماس با پشتیبانی
+                </a>
+            </div>
+        </div>
+        
+        <div class="mt-8 text-gray-400">
+            <p class="mb-2">یا می توانید از لینک های زیر استفاده کنید:</p>
+            <div class="flex gap-6 justify-center">
+                <a href="#" class="link-hover hover:text-green-400">مقالات</a>
+                <a href="#" class="link-hover hover:text-blue-400">خدمات</a>
+                <a href="#" class="link-hover hover:text-purple-400">درباره ما</a>
+                <a href="#" class="link-hover hover:text-pink-400">تماس</a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-0 right-0 text-center text-gray-500 text-sm">
+            <p>© 2023 تمامی حقوق محفوظ است</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some random floating elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.container');
+            const colors = ['#00ff9d', '#00a3ff', '#ff00c1'];
+            
+            for (let i = 0; i < 15; i++) {
+                const element = document.createElement('div');
+                const size = Math.random() * 20 + 5;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 10 + 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                element.style.position = 'absolute';
+                element.style.borderRadius = '50%';
+                element.style.backgroundColor = color;
+                element.style.opacity = '0.3';
+                element.style.left = `${posX}%`;
+                element.style.top = `${posY}%`;
+                element.style.animation = `floating ${duration}s ease-in-out ${delay}s infinite`;
+                
+                container.appendChild(element);
+            }
+        });
+    </script>
+</body>
+</html>
