@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل کاربری | مسابقه آموزشی</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Wazir:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Wazir';
+            src: url('https://fonts.googleapis.com/css2?family=Wazir&display=swap');
+        }
+        
+        body {
+            font-family: 'Wazir', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        .sidebar {
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-mobile {
+            transform: translateX(100%);
+        }
+        
+        .sidebar-mobile.open {
+            transform: translateX(0);
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-primary {
+            background-color: #1e40af;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #1e3a8a;
+        }
+        
+        .btn-secondary {
+            background-color: #166534;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #14532d;
+        }
+        
+        .progress-bar {
+            transition: width 1s ease;
+        }
+        
+        .menu-item {
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            background-color: rgba(30, 64, 175, 0.2);
+            border-right: 4px solid #1e40af;
+        }
+        
+        .menu-item.active {
+            background-color: rgba(30, 64, 175, 0.3);
+            border-right: 4px solid #1e40af;
+        }
+    </style>
+</head>
+<body class="font-wazir">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Desktop Sidebar -->
+        <div class="sidebar hidden md:flex md:flex-shrink-0">
+            <div class="flex flex-col w-64 bg-gray-900 border-r border-gray-800">
+                <div class="flex items-center justify-center h-16 px-4 bg-gray-800">
+                    <div class="flex items-center">
+                        <i class="fas fa-trophy text-blue-500 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-white">مسابقه آموزشی</span>
+                    </div>
+                </div>
+                <div class="flex flex-col flex-grow overflow-y-auto">
+                    <div class="flex flex-col py-4">
+                        <div class="px-4 py-2">
+                            <div class="flex items-center">
+                                <img class="w-10 h-10 rounded-full" src="https://randomuser.me/api/portraits/men/1.jpg" alt="User">
+                                <div class="mr-3">
+                                    <p class="text-sm font-medium text-white">محمد رضایی</p>
+                                    <p class="text-xs text-gray-400">شرکت کننده</p>
+                                </div>
+                            </div>
+                        </div>
+                        <nav class="mt-6">
+                            <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300 active" data-section="dashboard">
+                                <i class="fas fa-tachometer-alt mr-3 text-blue-400"></i>
+                                <span>داشبورد</span>
+                            </a>
+                            <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300" data-section="profile">
+                                <i class="fas fa-user mr-3 text-green-400"></i>
+                                <span>اطلاعات فردی</span>
+                            </a>
+                            <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300" data-section="training">
+                                <i class="fas fa-book mr-3 text-blue-400"></i>
+                                <span>محتوای آموزشی</span>
+                            </a>
+                            <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300" data-section="groups">
+                                <i class="fas fa-users mr-3 text-green-400"></i>
+                                <span>گروه‌بندی</span>
+                            </a>
+                            <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300" data-section="bank">
+                                <i class="fas fa-university mr-3 text-blue-400"></i>
+                                <span>بانک</span>
+                            </a>
+                            <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300" data-section="store">
+                                <i class="fas fa-store mr-3 text-green-400"></i>
+                                <span>فروشگاه</span>
+                            </a>
+                            <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300" data-section="scoreboard">
+                                <i class="fas fa-list-ol mr-3 text-blue-400"></i>
+                                <span>جدول امتیازات</span>
+                            </a>
+                            <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300" data-section="announcements">
+                                <i class="fas fa-bullhorn mr-3 text-green-400"></i>
+                                <span>اطلاعیه‌ها</span>
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Sidebar -->
+        <div class="sidebar-mobile fixed inset-y-0 right-0 z-50 w-64 bg-gray-900 border-r border-gray-800 overflow-y-auto transition-transform duration-300 ease-in-out">
+            <div class="flex items-center justify-between h-16 px-4 bg-gray-800">
+                <div class="flex items-center">
+                    <i class="fas fa-trophy text-blue-500 text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-white">مسابقه آموزشی</span>
+                </div>
+                <button id="close-mobile-menu" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="flex flex-col py-4">
+                <div class="px-4 py-2">
+                    <div class="flex items-center">
+                        <img class="w-10 h-10 rounded-full" src="https://randomuser.me/api/portraits/men/1.jpg" alt="User">
+                        <div class="mr-3">
+                            <p class="text-sm font-medium text-white">محمد رضایی</p>
+                            <p class="text-xs text-gray-400">شرکت کننده</p>
+                        </div>
+                    </div>
+                </div>
+                <nav class="mt-6">
+                    <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300 active" data-section="dashboard">
+                        <i class="fas fa-tachometer-alt mr-3 text-blue-400"></i>
+                        <span>داشبورد</span>
+                    </a>
+                    <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300" data-section="profile">
+                        <i class="fas fa-user mr-3 text-green-400"></i>
+                        <span>اطلاعات فردی</span>
+                    </a>
+                    <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300" data-section="training">
+                        <i class="fas fa-book mr-3 text-blue-400"></i>
+                        <span>محتوای آموزشی</span>
+                    </a>
+                    <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300" data-section="groups">
+                        <i class="fas fa-users mr-3 text-green-400"></i>
+                        <span>گروه‌بندی</span>
+                    </a>
+                    <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300" data-section="bank">
+                        <i class="fas fa-university mr-3 text-blue-400"></i>
+                        <span>بانک</span>
+                    </a>
+                    <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300" data-section="store">
+                        <i class="fas fa-store mr-3 text-green-400"></i>
+                        <span>فروشگاه</span>
+                    </a>
+                    <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300" data-section="scoreboard">
+                        <i class="fas fa-list-ol mr-3 text-blue-400"></i>
+                        <span>جدول امتیازات</span>
+                    </a>
+                    <a href="#" class="menu-item flex items-center px-4 py-3 text-gray-300" data-section="announcements">
+                        <i class="fas fa-bullhorn mr-3 text-green-400"></i>
+                        <span>اطلاعیه‌ها</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex flex-col flex-1 overflow-hidden">
+            <!-- Mobile Header -->
+            <div class="md:hidden flex items-center justify-between h-16 px-4 bg-gray-800 border-b border-gray-700">
+                <button id="open-mobile-menu" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+                <div class="flex items-center">
+                    <i class="fas fa-trophy text-blue-500 text-xl mr-2"></i>
+                    <span class="text-lg font-bold text-white">مسابقه آموزشی</span>
+                </div>
+                <div class="w-8"></div> <!-- Spacer for alignment -->
+            </div>
+            
+            <!-- Desktop Header -->
+            <div class="hidden md:flex items-center justify-between h-16 px-8 bg-gray-800 border-b border-gray-700">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold text-white" id="page-title">داشبورد</h1>
+                </div>
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <div class="relative">
+                        <button class="text-gray-400 hover:text-white">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+                        </button>
+                    </div>
+                    <button class="text-gray-400 hover:text-white">
+                        <i class="fas fa-sign-out-alt text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Content Area -->
+            <div class="flex-1 overflow-auto p-4 md:p-8 bg-gray-800">
+                <!-- Dashboard Section -->
+                <div class="content-section active" id="dashboard-section">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <div class="card bg-gray-700 rounded-lg p-6">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-blue-900 text-blue-400 mr-4">
+                                    <i class="fas fa-coins text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">امتیاز شما</p>
+                                    <p class="text-white text-2xl font-bold">1,250</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-gray-700 rounded-lg p-6">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-green-900 text-green-400 mr-4">
+                                    <i class="fas fa-users text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">رتبه گروه</p>
+                                    <p class="text-white text-2xl font-bold">#3</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-gray-700 rounded-lg p-6">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-blue-900 text-blue-400 mr-4">
+                                    <i class="fas fa-user text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">رتبه فردی</p>
+                                    <p class="text-white text-2xl font-bold">#12</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-gray-700 rounded-lg p-6">
+                            <div class="flex items-center">
+                                <div class="p-3 rounded-full bg-green-900 text-green-400 mr-4">
+                                    <i class="fas fa-book-open text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">دروس تکمیل شده</p>
+                                    <p class="text-white text-2xl font-bold">5/8</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                        <div class="card bg-gray-700 rounded-lg p-6 lg:col-span-2">
+                            <div class="flex items-center justify-between mb-4">
+                                <h2 class="text-lg font-bold text-white">پیشرفت شما</h2>
+                                <span class="text-sm text-blue-400">65% تکمیل شده</span>
+                            </div>
+                            <div class="w-full bg-gray-600 rounded-full h-4 mb-4">
+                                <div class="progress-bar bg-blue-500 h-4 rounded-full" style="width: 65%"></div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-gray-600 rounded-lg p-4">
+                                    <p class="text-gray-400 text-sm mb-1">تکالیف انجام شده</p>
+                                    <p class="text-white font-bold">8/12</p>
+                                </div>
+                                <div class="bg-gray-600 rounded-lg p-4">
+                                    <p class="text-gray-400 text-sm mb-1">آزمون‌های انجام شده</p>
+                                    <p class="text-white font-bold">3/5</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card bg-gray-700 rounded-lg p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h2 class="text-lg font-bold text-white">اطلاعیه‌های اخیر</h2>
+                                <a href="#" class="text-sm text-blue-400">مشاهده همه</a>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="bg-blue-900 text-blue-400 rounded-full p-2 mr-3">
+                                        <i class="fas fa-bullhorn text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white text-sm font-medium">آغاز مرحله دوم مسابقه</p>
+                                        <p class="text-gray-400 text-xs">2 ساعت پیش</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="bg-green-900 text-green-400 rounded-full p-2 mr-3">
+                                        <i class="fas fa-gift text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white text-sm font-medium">جوایز جدید در فروشگاه</p>
+                                        <p class="text-gray-400 text-xs">1 روز پیش</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="bg-blue-900 text-blue-400 rounded-full p-2 mr-3">
+                                        <i class="fas fa-users text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white text-sm font-medium">تغییرات در سیستم گروه‌بندی</p>
+                                        <p class="text-gray-400 text-xs">2 روز پیش</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-gray-700 rounded-lg p-6 mb-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-lg font-bold text-white">جدول امتیازات (5 تیم برتر)</h2>
+                            <a href="#" class="text-sm text-blue-400">مشاهده کامل جدول</a>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-600">
+                                <thead>
+                                    <tr>
+                                        <th class="px-4 py-3 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">رتبه</th>
+                                        <th class="px-4 py-3 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">نام گروه</th>
+                                        <th class="px-4 py-3 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">اعضا</th>
+                                        <th class="px-4 py-3 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">امتیاز</th>
+                                        <th class="px-4 py-3 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">پیشرفت</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-gray-700 divide-y divide-gray-600">
+                                    <tr>
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <span class="px-2 py-1 bg-yellow-600 text-white rounded-full text-xs font-bold">1</span>
+                                        </td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-white font-medium">تیم الف</td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-gray-300">4 نفر</td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-white font-bold">2,450</td>
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <div class="w-full bg-gray-600 rounded-full h-2">
+                                                <div class="bg-green-500 h-2 rounded-full" style="width: 85%"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <span class="px-2 py-1 bg-gray-500 text-white rounded-full text-xs font-bold">2</span>
+                                        </td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-white font-medium">تیم ب</td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-gray-300">3 نفر</td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-white font-bold">2,150</td>
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <div class="w-full bg-gray-600 rounded-full h-2">
+                                                <div class="bg-green-500 h-2 rounded-full" style="width: 75%"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <span class="px-2 py-1 bg-amber-700 text-white rounded-full text-xs font-bold">3</span>
+                                        </td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-white font-medium">تیم ج (شما)</td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-gray-300">4 نفر</td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-white font-bold">1,950</td>
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <div class="w-full bg-gray-600 rounded-full h-2">
+                                                <div class="bg-blue-500 h-2 rounded-full" style="width: 65%"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <span class="px-2 py-1 bg-gray-400 text-white rounded-full text-xs font-bold">4</span>
+                                        </td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-white font-medium">تیم د</td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-gray-300">3 نفر</td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-white font-bold">1,750</td>
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <div class="w-full bg-gray-600 rounded-full h-2">
+                                                <div class="bg-blue-500 h-2 rounded-full" style="width: 55%"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <span class="px-2 py-1 bg-gray-400 text-white rounded-full text-xs font-bold">5</span>
+                                        </td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-white font-medium">تیم ه</td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-gray-300">4 نفر</td>
+                                        <td class="px-4 py-4 whitespace-nowrap text-white font-bold">1,600</td>
+                                        <td class="px-4 py-4 whitespace-nowrap">
+                                            <div class="w-full bg-gray-600 rounded-full h-2">
+                                                <div class="bg-blue-500 h-2 rounded-full" style="width: 50%"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="card bg-gray-700 rounded-lg p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h2 class="text-lg font-bold text-white">آخرین محتوای آموزشی</h2>
+                                <a href="#" class="text-sm text-blue-400">مشاهده همه</a>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between p-3 bg-gray-600 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="bg-blue-900 text-blue-400 rounded-full p-2 mr-3">
+                                            <i class="fas fa-file-pdf text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-sm font-medium">آموزش پیشرفته CSS</p>
+                                            <p class="text-gray-400 text-xs">فایل PDF - 2.4MB</p>
+                                        </div>
+                                    </div>
+                                    <button class="text-blue-400 hover:text-blue-300">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-gray-600 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="bg-green-900 text-green-400 rounded-full p-2 mr-3">
+                                            <i class="fas fa-video text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-sm font-medium">ویدیوی آموزش JavaScript</p>
+                                            <p class="text-gray-400 text-xs">ویدیو - 15 دقیقه</p>
+                                        </div>
+                                    </div>
+                                    <button class="text-blue-400 hover:text-blue-300">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-gray-600 rounded-lg">
+                                    <div class="flex items-center">
+                                        <div class="bg-blue-900 text-blue-400 rounded-full p-2 mr-3">
+                                            <i class="fas fa-file-alt text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-sm font-medium">تمرینات HTML</p>
+                                            <p class="text-gray-400 text-xs">سند متنی</p>
+                                        </div>
+                                    </div>
+                                    <button class="text-blue-400 hover:text-blue-300">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card bg-gray-700 rounded-lg p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h2 class="text-lg font-bold text-white">آیتم‌های جدید فروشگاه</h2>
+                                <a href="#" class="text-sm text-blue-400">مشاهده همه</a>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-gray-600 rounded-lg p-3 text-center">
+                                    <div class="bg-blue-900 text-blue-400 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">
+                                        <i class="fas fa-gem text-xl"></i>
+                                    </div>
+                                    <p class="text-white text-sm font-medium">اشتراک ویژه</p>
+                                    <p class="text-green-400 text-xs font-bold">500 امتیاز</p>
+                                </div>
+                                <div class="bg-gray-600 rounded-lg p-3 text-center">
+                                    <div class="bg-green-900 text-green-400 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">
+                                        <i class="fas fa-book text-xl"></i>
+                                    </div>
+                                    <p class="text-white text-sm font-medium">کتاب آموزشی</p>
+                                    <p class="text-green-400 text-xs font-bold">300 امتیاز</p>
+                                </div>
+                                <div class="bg-gray-600 rounded-lg p-3 text-center">
+                                    <div class="bg-blue-900 text-blue-400 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">
+                                        <i class="fas fa-coffee text-xl"></i>
+                                    </div>
+                                    <p class="text-white text-sm font-medium">کد تخفیف کافه</p>
+                                    <p class="text-green-400 text-xs font-bold">200 امتیاز</p>
+                                </div>
+                                <div class="bg-gray-600 rounded-lg p-3 text-center">
+                                    <div class="bg-green-900 text-green-400 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-2">
+                                        <i class="fas fa-headphones text-xl"></i>
+                                    </div>
+                                    <p class="text-white text-sm font-medium">مشاوره تخصصی</p>
+                                    <p class="text-green-400 text-xs font-bold">400 امتیاز</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Profile Section -->
+                <div class="content-section" id="profile-section">
+                    <div class="card bg-gray-700 rounded-lg p-6 mb-8">
+                        <h2 class="text-xl font-bold text-white mb-6">اطلاعات فردی</h2>
+                        <form>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label class="block text-gray-400 text-sm font-medium mb-2" for="first-name">نام</label>
+                                    <input class="w-full bg-gray-600 border border-gray-500 rounded-lg py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" id="first-name" type="text" value="محمد">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-400 text-sm font-medium mb-2" for="last-name">نام خانوادگی</label>
+                                    <input class="w-full bg-gray-600 border border-gray-500 rounded-lg py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" id="last-name" type="text" value="رضایی">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-400 text-sm font-medium mb-2" for="email">ایمیل</label>
+                                    <input class="w-full bg-gray-600 border border-gray-500 rounded-lg py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" id="email" type="email" value="mohammad@example.com">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-400 text-sm font-medium mb-2" for="phone">شماره تماس</label>
+                                    <input class="w-full bg-gray-600 border border-gray-500 rounded-lg py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" id="phone" type="tel" value="09123456789">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label class="block text-gray-400 text-sm font-medium mb-2" for="bio">درباره من</label>
+                                <textarea class="w-full bg-gray-600 border border-gray-500 rounded-lg py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" id="bio" rows="3">برنامه‌نویس فرانت‌اند با 3 سال سابقه کار</textarea>
+                            </div>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <img class="w-16 h-16 rounded-full mr-4" src="https://randomuser.me/api/portraits/men/1.jpg" alt="User">
+                                    <div>
+                                        <button class="btn-primary text-white py-2 px-4 rounded-lg text-sm font-medium">تغییر تصویر</button>
+                                        <p class="text-gray-400 text-xs mt-1">JPG, GIF or PNG. Max size of 2MB</p>
+                                    </div>
+                                </div>
+                                <button class="btn-primary text-white py-2 px-6 rounded-lg font-medium">ذخیره تغییرات</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="card bg-gray-700 rounded-lg p-6">
+                        <h2 class="text-xl font-bold text-white mb-6">تغییر رمز عبور</h2>
+                        <form>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label class="block text-gray-400 text-sm font-medium mb-2" for="current-password">رمز عبور فعلی</label>
+                                    <input class="w-full bg-gray-600 border border-gray-500 rounded-lg py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" id="current-password" type="password">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-400 text-sm font-medium mb-2" for="new-password">رمز عبور جدید</label>
+                                    <input class="w-full bg-gray-600 border border-gray-500 rounded-lg py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" id="new-password" type="password">
+                                </div>
+                            </div>
+                            <div class="flex justify-end">
+                                <button class="btn-primary text-white py-2 px-6 rounded-lg font-medium">بروزرسانی رمز عبور</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Training Section -->
+                <div class="content-section" id="training-section">
+                    <div class="flex items-center justify-between mb-8">
+                        <h2 class="text-xl font-bold text-white">محتوای آموزشی</h2>
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="relative">
+                                <select class="appearance-none bg-gray-700 border border-gray-600 text-white py-2 px-4 pr-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option>همه دسته‌بندی‌ها</option>
+                                    <option>HTML/CSS</option>
+                                    <option>JavaScript</option>
+                                    <option>React</option>
+                                    <option>Node.js</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-400">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <input class="bg-gray-700 border border-gray-600 text-white py-2 px-4 pr-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="جستجو...">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                        <div class="card bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="bg-blue-900 h-40 flex items-center justify-center">
+                                <i class="fas fa-file-pdf text-5xl text-blue-400"></i>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="text-lg font-bold text-white">آموزش پیشرفته CSS</h3>
+                                    <span class="bg-blue-900 text-blue-400 text-xs px-2 py-1 rounded">PDF</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4">آموزش کامل مفاهیم پیشرفته CSS شامل Flexbox, Grid, Animations و ...</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-500 text-xs">2.4MB</span>
+                                    <div class="flex space-x-2 space-x-reverse">
+                                        <button class="text-blue-400 hover:text-blue-300">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="text-blue-400 hover:text-blue-300">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="bg-green-900 h-40 flex items-center justify-center">
+                                <i class="fas fa-video text-5xl text-green-400"></i>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="text-lg font-bold text-white">ویدیوی آموزش JavaScript</h3>
+                                    <span class="bg-green-900 text-green-400 text-xs px-2 py-1 rounded">ویدیو</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4">آموزش مفاهیم پایه و پیشرفته JavaScript در 15 دقیقه</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-500 text-xs">15 دقیقه</span>
+                                    <div class="flex space-x-2 space-x-reverse">
+                                        <button class="text-blue-400 hover:text-blue-300">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                        <button class="text-blue-400 hover:text-blue-300">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="bg-blue-900 h-40 flex items-center justify-center">
+                                <i class="fas fa-file-alt text-5xl text-blue-400"></i>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="text-lg font-bold text-white">تمرینات HTML</h3>
+                                    <span class="bg-blue-900 text-blue-400 text-xs px-2 py-1 rounded">متنی</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4">مجموعه تمرینات HTML برای تسلط بر مفاهیم پایه</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-500 text-xs">450KB</span>
+                                    <div class="flex space-x-2 space-x-reverse">
+                                        <button class="text-blue-400 hover:text-blue-300">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="text-blue-400 hover:text-blue-300">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="bg-green-900 h-40 flex items-center justify-center">
+                                <i class="fas fa-file-pdf text-5xl text-green-400"></i>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="text-lg font-bold text-white">آموزش React.js</h3>
+                                    <span class="bg-green-900 text-green-400 text-xs px-2 py-1 rounded">PDF</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4">آموزش جامع کتابخانه React.js از پایه تا پیشرفته</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-500 text-xs">3.1MB</span>
+                                    <div class="flex space-x-2 space-x-reverse">
+                                        <button class="text-blue-400 hover:text-blue-300">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="text-blue-400 hover:text-blue-300">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="bg-blue-900 h-40 flex items-center justify-center">
+                                <i class="fas fa-video text-5xl text-blue-400"></i>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="text-lg font-bold text-white">آموزش Node.js</h3>
+                                    <span class="bg-blue-900 text-blue-400 text-xs px-2 py-1 rounded">ویدیو</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4">آموزش ساخت API با Node.js و Express</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-500 text-xs">25 دقیقه</span>
+                                    <div class="flex space-x-2 space-x-reverse">
+                                        <button class="text-blue-400 hover:text-blue-300">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                        <button class="text-blue-400 hover:text-blue-300">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="bg-green-900 h-40 flex items-center justify-center">
+                                <i class="fas fa-file-alt text-5xl text-green-400"></i>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3 class="text-lg font-bold text-white">تمرینات CSS</h3>
+                                    <span class="bg-green-900 text-green-400 text-xs px-2 py-1 rounded">متنی</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4">مجموعه تمرینات CSS برای تسلط بر استایل‌دهی</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-500 text-xs">320KB</span>
+                                    <div class="flex space-x-2 space-x-reverse">
+                                        <button class="text-blue-400 hover:text-blue-300">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="text-blue-400 hover:text-blue-300">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <nav class="flex items-center space-x-2 space-x-reverse">
+                            <button class="px-3 py-1 rounded-lg bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="px-3 py-1 rounded-lg bg-blue-900 text-white">1</button>
+                            <button class="px-3 py-1 rounded-lg bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white">2</button>
+                            <button class="px-3 py-1 rounded-lg bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white">3</button>
+                            <button class="px-3 py-1 rounded-lg bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+                
+                <!-- Groups Section -->
+                <div class="content-section" id="groups-section">
+                    <div class="flex items-center justify-between mb-8">
+                        <h2 class="text-xl font-bold text-white">گروه‌بندی</h2>
+                        <button class="btn-primary flex items-center py-2 px-4 rounded-lg">
+                            <i class="fas fa-plus ml-2"></i>
+                            <span>ایجاد گروه جدید</span>
+                        </button>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                        <div class="card bg-gray-700 rounded-lg p-6 lg:col-span-2">
+                            <h3 class="text-lg font-bold text-white mb-4">گروه شما</h3>
+                            <div class="bg-gray-600 rounded-lg p-4 mb-4">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center">
+                                        <div class="bg-blue-900 text-blue-400 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white font-medium">تیم ج</p>
+                                            <p class="text-gray-400 text-xs">4 عضو</p>
+                                        </div>
+                                    </div>
+                                    <span class="bg-blue-900 text-blue-400 text-xs px-2 py-1 rounded">رتبه 3</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="text-gray-400 text-sm mb-1">امتیاز گروه</p>
+                                        <p class="text-white font-bold">1,950 امتیاز</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-400 text-sm mb-1">میانگین امتیاز</p>
+                                        <p class="text-white font-bold">487.5</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-400 text-sm mb-1">پیشرفت</p>
+                                        <div class="w-20 bg-gray-500 rounded-full h-2">
+                                            <div class="bg-blue-500 h-2 rounded-full" style="width: 65%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h4 class="text-md font-bold text-white mb-3">اعضای گروه</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between bg-gray-600 rounded-lg p-3">
+                                    <div class="flex items-center">
+                                        <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/1.jpg" alt="User">
+                                        <div>
+                                            <p class="text-white text-sm font-medium">محمد رضایی</p>
+                                            <p class="text-gray-400 text-xs">سرگروه</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-green-400 text-sm font-bold">550 امتیاز</span>
+                                </div>
+                                <div class="flex items-center justify-between bg-gray-600 rounded-lg p-3">
+                                    <div class="flex items-center">
+                                        <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/1.jpg" alt="User">
+                                        <div>
+                                            <p class="text-white text-sm font-medium">فاطمه محمدی</p>
+                                            <p class="text-gray-400 text-xs">عضو</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-green-400 text-sm font-bold">480 امتیاز</span>
+                                </div>
+                                <div class="flex items-center justify-between bg-gray-600 rounded-lg p-3">
+                                    <div class="flex items-center">
+                                        <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/2.jpg" alt="User">
+                                        <div>
+                                            <p class="text-white text-sm font-medium">علی احمدی</p>
+                                            <p class="text-gray-400 text-xs">عضو</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-green-400 text-sm font-bold">450 امتیاز</span>
+                                </div>
+                                <div class="flex items-center justify-between bg-gray-600 rounded-lg p-3">
+                                    <div class="flex items-center">
+                                        <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/2.jpg" alt="User">
+                                        <div>
+                                            <p class="text-white text-sm font-medium">زهرا حسینی</p>
+                                            <p class="text-gray-400 text-xs">عضو</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-green-400 text-sm font-bold">470 امتیاز</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card bg-gray-700 rounded-lg p-6">
+                            <h3 class="text-lg font-bold text-white mb-4">درخواست‌های گروه</h3>
+                            <div class="space-y-4">
+                                <div class="bg-gray-600 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center">
+                                            <img class="w-10 h-10 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/3.jpg" alt="User">
+                                            <div>
+                                                <p class="text-white text-sm font-medium">رضا کریمی</p>
+                                                <p class="text-gray-400 text-xs">420 امتیاز</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex space-x-2 space-x-reverse">
+                                            <button class="bg-green-900 text-green-400 text-xs px-3 py-1 rounded-lg hover:bg-green-800">
+                                                <i class="fas fa-check"></i>
+                                            </button>
+                                            <button class="bg-red-900 text-red-400 text-xs px-3 py-1 rounded-lg hover:bg-red-800">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-400 text-xs">درخواست عضویت در گروه شما را دارد.</p>
+                                </div>
+                                
+                                <div class="bg-gray-600 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center">
+                                            <img class="w-10 h-10 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/3.jpg" alt="User">
+                                            <div>
+                                                <p class="text-white text-sm font-medium">نرگس سلیمانی</p>
+                                                <p class="text-gray-400 text-xs">390 امتیاز</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex space-x-2 space-x-reverse">
+                                            <button class="bg-green-900 text-green-400 text-xs px-3 py-1 rounded-lg hover:bg-green-800">
+                                                <i class="fas fa-check"></i>
+                                            </button>
+                                            <button class="bg-red-900 text-red-400 text-xs px-3 py-1 rounded-lg hover:bg-red-800">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-400 text-xs">درخواست عضویت در گروه شما را دارد.</p>
+                                </div>
+                            </div>
+                            
+                            <h3 class="text-lg font-bold text-white mt-6 mb-4">گروه‌های پیشنهادی</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between bg-gray-600 rounded-lg p-3">
+                                    <div class="flex items-center">
+                                        <div class="bg-blue-900 text-blue-400 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-sm font-medium">تیم د</p>
+                                            <p class="text-gray-400 text-xs">3 عضو - 1750 امتیاز</p>
+                                        </div>
+                                    </div>
+                                    <button class="text-blue-400 text-xs hover:text-blue-300">
+                                        <i class="fas fa-user-plus"></i>
+                                    </button>
+                                </div>
+                                <div class="flex items-center justify-between bg-gray-600 rounded-lg p-3">
+                                    <div class="flex items-center">
+                                        <div class="bg-green-900 text-green-400 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <div>
+                                            <p class="text-white text-sm font-medium">تیم ه</p>
+                                            <p class="text-gray-400 text-xs">4 عضو - 1600 امتیاز</p>
+                                        </div>
+                                    </div>
+                                    <button class="text-blue-400 text-xs hover:text-blue-300">
+                                        <i class="fas fa-user-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-gray-700 rounded-lg p-6">
+                        <h3 class="text-lg font-bold text-white mb-4">گفتگوی گروهی</h3>
+                        <div class="bg-gray-600 rounded-lg p-4 mb-4 h-64 overflow-y-auto">
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/1.jpg" alt="User">
+                                    <div class="bg-blue-900 rounded-lg p-3 max-w-xs">
+                                        <p class="text-white text-sm">سلام به همه! امروز تمرین جدیدی رو آپلود کردم حتما انجام بدید.</p>
+                                        <p class="text-gray-400 text-xs mt-1">10:30 AM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start justify-end">
+                                    <div class="bg-green-900 rounded-lg p-3 max-w-xs">
+                                        <p class="text-white text-sm">سلام محمد! من انجام دادم. سوال 3 رو یه کم توضیح میدی؟</p>
+                                        <p class="text-gray-400 text-xs mt-1">10:35 AM</p>
+                                    </div>
+                                    <img class="w-8 h-8 rounded-full ml-3" src="https://randomuser.me/api/portraits/women/1.jpg" alt="User">
+                                </div>
+                                <div class="flex items-start">
+                                    <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/2.jpg" alt="User">
+                                    <div class="bg-blue-900 rounded-lg p-3 max-w-xs">
+                                        <p class="text-white text-sm">منم سوال 5 رو متوجه نشدم. میشه کمک کنید؟</p>
+                                        <p class="text-gray-400 text-xs mt-1">10:40 AM</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <img class="w-8 h-8 rounded-full mr-3" src="https://randomuser.me/api/portraits/men/1.jpg" alt="User">
+                                    <div class="bg-blue-900 rounded-lg p-3 max-w-xs">
+                                        <p class="text-white text-sm">حتما. ساعت 8 آنلاین میشم توضیح میدم.</p>
+                                        <p class="text-gray-400 text-xs mt-1">10:42 AM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <input class="flex-1 bg-gray-600 border border-gray-500 text-white py-2 px-4 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="پیام شما...">
+                            <button class="btn-primary text-white py-2 px-4 rounded-r-lg">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bank Section -->
+                <div class="content-section" id="bank-section">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                        <div class="card bg-gray-700 rounded-lg p-6 lg:col-span-2">
+                            <h2 class="text-xl font-bold text-white mb-6">وضعیت مالی</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div class="bg-gray-600 rounded-lg p-6">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <p class="text-gray-400">موجودی قابل برداشت</p>
+                                        <i class="fas fa-wallet text-blue-400"></i>
+                                    </div>
+                                    <p class="text-2xl font-bold text-white mb-2">1,250 <span class="text-sm text-gray-400">امتیاز</span></p>
+                                    <div class="flex space-x-3 space-x-reverse">
+                                        <button class="btn-primary text-white py-1 px-3 rounded-lg text-sm">برداشت</button>
+                                        <button class="btn-secondary text-white py-1 px-3 rounded-lg text-sm">واریز</button>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-600 rounded-lg p-6">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <p class="text-gray-400">وام دریافتی</p>
+                                        <i class="fas fa-hand-holding-usd text-green-400"></i>
+                                    </div>
+                                    <p class="text-2xl font-bold text-white mb-2">500 <span class="text-sm text-gray-400">امتیاز</span></p>
+                                    <div class="text-xs text-gray-400">
+                                        <p>باقیمانده: 300 امتیاز</p>
+                                        <p>سررسید: 15 روز دیگر</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h3 class="text-lg font-bold text-white mb-4">تراکنش‌های اخیر</h3>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-600">
+                                    <thead>
+                                        <tr>
+                                            <th class="px-4 py-3 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">تاریخ</th>
+                                            <th class="px-4 py-3 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">شرح</th>
+                                            <th class="px-4 py-3 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">مبلغ</th>
+                                            <th class="px-4 py-3 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">وضعیت</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-gray-700 divide-y divide-gray-600">
+                                        <tr>
+                                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-300">1402/05/15</td>
+                                            <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-white">فروش آیتم در فروشگاه</td>
+                                            <td class="px-4 py-4 whitespace-nowrap text-sm text-green-400 font-bold">+200</td>
+                                            <td class="px-4 py-4 whitespace-nowrap">
+                                                <span class="px-2 py-1 bg-green-900 text-green-400 rounded-full text-xs">موفق</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-300">1402/05/12</td>
+                                            <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-white">خرید از فروشگاه</td>
+                                            <td class="px-4 py-4 whitespace-nowrap text-sm text-red-400 font-bold">-150</td>
+                                            <td class="px-4 py-4 whitespace-nowrap">
+                                                <span class="px-2 py-1 bg-green-900 text-green-400 rounded-full text-xs">موفق</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-300">1402/05/10</td>
+                                            <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-white">دریافت وام</td>
+                                            <td class="px-4 py-4 whitespace-nowrap text-sm text-green-400 font-bold">+500</td>
+                                            <td class="px-4 py-4 whitespace-nowrap">
+                                                <span class="px-2 py-1 bg-green-900 text-green-400 rounded-full text-xs">موفق</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-300">1402/05/08</td>
+                                            <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-white">پاداش تکلیف</td>
+                                            <td class="px-4 py-4 whitespace-nowrap text-sm text-green-400 font-bold">+100</td>
+                                            <td class="px-4 py-4 whitespace-nowrap">
+                                                <span class="px-2 py-1 bg-green-900 text-green-400 rounded-full text-xs">موفق</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-300">1402/05/05</td>
+                                            <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-white">انتقال به علی احمدی</td>
+                                            <td class="px-4 py-4 whitespace-nowrap text-sm text-red-400 font-bold">-50</td>
+                                            <td class="px-4 py-4 whitespace-nowrap">
+                                                <span class="px-2 py-1 bg-green-900 text-green-400 rounded-full text-xs">موفق</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="card bg-gray-700 rounded-lg p-6">
+                            <h2 class="text-xl font-bold text-white mb-6">خدمات بانکی</h2>
+                            <div class="space-y-4">
+                                <div class="bg-gray-600 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h3 class="text-lg font-medium text-white">انتقال وجه</h3>
+                                        <i class="fas fa-exchange-alt text-blue-400"></i>
+                                    </div>
+                                    <p class="text-gray-400 text-sm mb-3">امتیاز خود را به دیگران انتقال دهید</p>
+                                    <button class="btn-primary w-full py-2 px-4 rounded-lg">انتقال وجه</button>
+                                </div>
+                                
+                                <div class="bg-gray-600 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h3 class="text-lg font-medium text-white">درخواست وام</h3>
+                                        <i class="fas fa-hand-holding-usd text-green-400"></i>
+                                    </div>
+                                    <p class="text-gray-400 text-sm mb-3">تا سقف 1000 امتیاز وام دریافت کنید</p>
+                                    <button class="btn-secondary w-full py-2 px-4 rounded-lg">درخواست وام</button>
+                                </div>
+                                
+                                <div class="bg-gray-600 rounded-lg p-4">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h3 class="text-lg font-medium text-white">تسویه وام</h3>
+                                        <i class="fas fa-coins text-yellow-400"></i>
+                                    </div>
+                                    <p class="text-gray-400 text-sm mb-3">300 امتیاز باقیمانده از وام</p>
+                                    <button class="bg-yellow-900 text-yellow-400 w-full py-2 px-4 rounded-lg hover:bg-yellow-800">تسویه وام</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Store Section -->
+                <div class="content-section" id="store-section">
+                    <div class="flex items-center justify-between mb-8">
+                        <h2 class="text-xl font-bold text-white">فروشگاه</h2>
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="relative">
+                                <select class="appearance-none bg-gray-700 border border-gray-600 text-white py-2 px-4 pr-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option>همه دسته‌بندی‌ها</option>
+                                    <option>کتاب‌ها</option>
+                                    <option>کدهای تخفیف</option>
+                                    <option>مشاوره</option>
+                                    <option>اشتراک‌ها</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-400">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <input class="bg-gray-700 border border-gray-600 text-white py-2 px-4 pr-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" placeholder="جستجو...">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <div class="card bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="bg-blue-900 h-40 flex items-center justify-center">
+                                <i class="fas fa-gem text-5xl text-blue-400"></i>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-lg font-bold text-white mb-2">اشتراک ویژه</h3>
+                                <p class="text-gray-400 text-sm mb-4">دسترسی به تمامی محتوای ویژه به مدت 1 ماه</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-green-400 text-lg font-bold">500 امتیاز</span>
+                                    <button class="btn-primary text-white py-1 px-4 rounded-lg text-sm">خرید</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="bg-green-900 h-40 flex items-center justify-center">
+                                <i class="fas fa-book text-5xl text-green-400"></i>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-lg font-bold text-white mb-2">کتاب آموزشی JavaScript</h3>
+                                <p class="text-gray-400 text-sm mb-4">کتاب جامع آموزش JavaScript از پایه تا پیشرفته</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-green-400 text-lg font-bold">300 امتیاز</span>
+                                    <button class="btn-primary text-white py-1 px-4 rounded-lg text-sm">خرید</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="bg-blue-900 h-40 flex items-center justify-center">
+                                <i class="fas fa-coffee text-5xl text-blue-400"></i>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-lg font-bold text-white mb-2">کد تخفیف کافه</h3>
+                                <p class="text-gray-400 text-sm mb-4">کد تخفیف 20% برای کافی شاپ شهر کتاب</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-green-400 text-lg font-bold">200 امتیاز</span>
+                                    <button class="btn-primary text-white py-1 px-4 rounded-lg text-sm">خرید</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="bg-green-900 h-40 flex items-center justify-center">
+                                <i class="fas fa-headphones text-5xl text-green-400"></i>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-lg font-bold text-white mb-2">مشاوره تخصصی</h3>
+                                <p class="text-gray-400 text-sm mb-4">1 ساعت مشاوره تخصصی با مربیان برتر</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-green-400 text-lg font-bold">400 امتیاز</span>
+                                    <button class="btn-primary text-white py-1 px-4 rounded-lg text-sm">خرید</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card bg-gray-700 rounded-lg overflow-hidden">
+                            <div class="bg-blue-900 h-40 flex items-center justify-center">
+                                <i class="fas fa-laptop-code text-5xl text-blue-400"></i>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-lg font-bold text-white mb-2">دوره ویدیویی React</h3>
+                                <p class="text-gray-400 text-sm mb-4">دوره کامل آموزش React.js به همراه پروژه</p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-green-400 text-lg font-bold">600 امتیاز</span>
+                                    <button class="btn-primary text-white py-
+</html>
